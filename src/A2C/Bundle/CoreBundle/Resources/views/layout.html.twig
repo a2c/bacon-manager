@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="pt-br"> <!--<![endif]-->
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+        <link rel="shortcut icon" href="images/favicon.ico" />
+
+        <title>{{ appname }} - {% block title %}{% endblock %}</title>
+
+        {% block stylesheet%}
+            <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/css/bootstrap.min.css") }}" />
+            <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/css/bootstrap-theme.min.css") }}" />
+            <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/chosen/chosen.min.css") }}" />
+            <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/datepicker/css/datepicker3.css") }}" />
+            <link rel="stylesheet" href="{{ asset("bundles/a2ccore/css/admin/style.css") }}" />
+        {% endblock %}
+
+        <script src="{{ asset("bundles/a2ccore/js/admin/modernizr.custom.16572.js") }}"></script>
+
+        <script>
+            var baseUrl = 'url_base_do_projeto';
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Alternar navegação</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+
+                        <a class="navbar-brand" href="?index">{{ appname }}</a>
+                    </div>
+
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#">Módulo</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main class="container">
+            {%- block body -%}{%- endblock -%}
+        </main>
+
+        <footer class="container">
+            <div class="pull-left">
+                <a href="{{ footer_link }}" target="_blank">{{ footer_description }}</a>
+            </div>
+        </footer>
+
+        <!--[if gte IE 9]><!-->
+        <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+        <!--<![endif]-->
+        <!--[if lt IE 9]>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <![endif]-->
+
+        {% block javascripts %}
+            <script src="{{ asset("bundles/a2ccore/bootstrap/js/bootstrap.min.js") }}"></script>
+            <script src="{{ asset("bundles/a2ccore/bootstrap/chosen/chosen.jquery.min.js") }}"></script>
+            <script src="{{ asset("bundles/a2ccore/bootstrap/datepicker/js/bootstrap-datepicker.min.js") }}"></script>
+            <script src="{{ asset("bundles/a2ccore/js/admin/jquery.validate.min.js") }}"></script>
+            <script src="{{ asset("bundles/a2ccore/js/admin/script.js") }}"></script>
+        {% endblock %}
+    </body>
+</html>

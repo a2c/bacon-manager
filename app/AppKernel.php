@@ -16,6 +16,13 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+
+            //A2C Core
+            new A2C\Bundle\CoreBundle\A2CCoreBundle(),
+
+            //Pagination
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
             new AppBundle\AppBundle(),
         );
 
@@ -24,6 +31,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new A2C\Bundle\GeneratorBundle\A2CGeneratorBundle();
         }
 
         return $bundles;
@@ -36,15 +44,9 @@ class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            return '/tmp/cache/symfony2/'.$this->environment;
-        }
-    }
-
-    public function getLogDir()
-    {
-        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            return '/tmp/log/symfony2/'.$this->environment;
-        }
+        if ($this->getEnvironment() == 'dev')
+            return '/tmp/cache/' . $this->getEnvironment() . '/';
+        else
+            return parent::getCacheDir();
     }
 }

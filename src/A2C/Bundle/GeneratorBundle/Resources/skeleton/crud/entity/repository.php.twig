@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ namespace }}\Entity\Repository;
+
+{% block use_statements %}
+use Doctrine\ORM\EntityRepository;
+use {{ namespace }}\Entity\{{ entity }};
+{% endblock use_statements %}
+
+{% block class_definition %}
+class {{ entity }}Repository extends EntityRepository
+{% endblock class_definition %}
+{
+    public function getQueryPagination({{ entity }} ${{ entity|lower }})
+    {
+        {%- set alias = entity|lower|first %}
+
+        $queryBuilder = $this->createQueryBuilder('{{ alias }}');
+
+        return $queryBuilder->getQuery();
+    }
+}

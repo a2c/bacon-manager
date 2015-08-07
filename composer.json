@@ -1,5 +1,5 @@
 {
-    "name": "adan/a2c_manager",
+    "name": "a2c/start_symfony2_project",
     "license": "proprietary",
     "type": "project",
     "autoload": {
@@ -9,7 +9,7 @@
         }
     },
     "require": {
-        "php": ">=5.3.9",
+        "php": ">=5.4",
         "symfony/symfony": "2.7.*",
         "doctrine/orm": "~2.2,>=2.2.3,<2.5",
         "doctrine/dbal": "<2.5",
@@ -19,7 +19,10 @@
         "symfony/monolog-bundle": "~2.4",
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
-        "incenteev/composer-parameter-handler": "~2.0"
+        "incenteev/composer-parameter-handler": "~2.0",
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "twig/extensions": "dev-master",
+        "fzaninotto/faker": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

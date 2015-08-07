@@ -1,3 +1,8 @@
+a2_c_core:
+    resource: "@A2CCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
