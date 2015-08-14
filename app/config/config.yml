@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: pt_BR
+    locale: "en_US"
     app_name: "A2C Manager"
     footer_description : "A2C"
     footer_link: "http://www.a2c.com.br/"
@@ -45,6 +45,7 @@ twig:
     form:
         resources: ['bootstrap_3_layout.html.twig']
     globals:
+        app_locale: "%locale%"
         appname: "%app_name%"
         footer_description: "%footer_description%"
         footer_link: "%footer_link%"

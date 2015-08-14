@@ -44,7 +44,7 @@
                         <tr>
                             <td><a href="{{ path('post_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                             <td>{{ entity.name }}</td>
-                            <td>{% if entity.date %}{{ entity.date|localizeddate('medium','medium',app.request.locale) }}{% endif %}</td>
+                            <td>{{ entity.date|localizeddate('medium','medium',app.request.locale) }}</td>
                             <td width="140">
                                 <a href="{{ path('post_show', { 'id': entity.id }) }}" class="btn btn-sm btn-default" data-original-title="{{ 'Show'|trans }}">
                                     <span class="glyphicon glyphicon-eye-open"></span>
