@@ -77,3 +77,9 @@ exec { "apache_lockfile_permissions" :
   require => Package["apache2"],
   notify  => Service["apache2"],
 }
+
+exec { "composerDownload" :
+    command => "curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer",
+    require => [Exec["apt-get update"], Package['mysql-client'], Package['apache2']],
+
+}
