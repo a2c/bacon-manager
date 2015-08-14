@@ -4,11 +4,21 @@
 
 {% block body %}
 {{ "{% block body -%}" }}
-    <h1>{{ entity }} creation</h1>
+    <header class="row page-header">
 
-    {{ '{{ form(form) }}' }}
+        <h2 class="col-lg-8">{{ "{{ '"~ entity ~"'|trans }}" }} <small>{{ "{{ 'New'|trans }}" }}</small></h2>
 
-    {% set hide_edit, hide_delete = true, true %}
-    {% include 'crud/views/others/record_actions.html.twig.twig' %}
+    </header>
+    <section>
+
+        <div class="alert alert-info">Mensagem de informação.</div>
+        <div class="alert alert-danger">Mensagem de erro.</div>
+        <div class="alert alert-success">Mensagem de sucesso.</div>
+
+        {{ '{{ form(form) }}' }}
+
+        {% set hide_edit, hide_delete = true, true %}
+
+    </section>
 {{ "{% endblock %}" }}
 {% endblock body %}

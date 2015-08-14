@@ -6,25 +6,23 @@
      *
 {% block phpdoc_method_annotations %}
 {% if 'annotation' == format %}
-     * @Route("/", name="{{ route_name_prefix }}")
+     * @Route("/",defaults={"page":"1"}, name="{{ route_name_prefix }}")
+     * @Route("/index/page/{page}",defaults={"page":"1"}, name="{{ route_name_prefix }}_pagination")
      * @Method("GET")
      * @Template()
 {% endif %}
 {% endblock phpdoc_method_annotations %}
      */
 {% block method_definition %}
-    public function indexAction()
+    public function indexAction($page)
 {% endblock method_definition %}
     {
 {% block method_body %}
 
         $query = $this->getDoctrine()->getRepository('{{ bundle }}:{{ entity }}')->getQueryPagination(new {{ entity }}());
 
-        $paginator = $this->getPagination()->paginate(
-            $query,
-            1,
-            10/*limit per page*/
-        );
+        $paginator = $this->getPagination($query,$page,{{ entity }}::PER_PAGE);
+        $paginator->setUsedRoute('{{ route_name_prefix }}_pagination');
 {% endblock method_body %}
 
 {% block method_return %}

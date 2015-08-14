@@ -1,14 +1,27 @@
 {% block extends %}
-{{ "{% extends 'A2CCoreBundle::layout.html.twig' %}" }}
+    {{ "{% extends 'A2CCoreBundle::layout.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
 {{ "{% block body -%}" }}
-    <h1>{{ entity }} edit</h1>
+    <header class="row page-header">
+
+        <h2 class="col-lg-8">{{ "{{ '"~ entity ~"'|trans }}" }} <small>{{ "{{ 'Edit'|trans }}" }}</small></h2>
+        <div class="col-lg-4">
+            <div class="btn-group pull-right">
+                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    {{ "{{ 'Add'|trans }}" }}
+                </a>
+                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit',{ '"~ identifier ~"': entity."~ identifier ~ " }) }}" }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    {{ "{{ 'Edit'|trans }}" }}
+                </a>
+            </div>
+        </div>
+    </header>
 
     {{ '{{ form(edit_form) }}' }}
 
-    {% set hide_edit, hide_delete = true, false %}
-    {% include 'crud/views/others/record_actions.html.twig.twig' %}
 {{ "{% endblock %}" }}
 {% endblock body %}

@@ -55,8 +55,15 @@
 
                         {%- elseif metadata.type in ['date', 'datetime'] %}
 
-                            <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}{% endif %}' }}</td>
+                            {%- if metadata.type == 'datetime' %}
 
+                            <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ "|localizeddate('medium','medium',app.request.locale) }}{% endif %}" }}</td>
+
+                            {%- else %}
+
+                            <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ "|localizeddate('medium','none',app.request.locale) }}{% endif %}" }}</td>
+
+                            {%- endif %}
                         {%- else %}
 
                             <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>

@@ -4,33 +4,54 @@
 
 {% block body %}
 {{ "{% block body -%}" }}
-    <h1>{{ entity }}</h1>
+    <header class="row page-header">
 
-    <table class="record_properties">
-        <tbody>
-        {%- for field, metadata in fields %}
+        <h2 class="col-lg-8">{{ "{{ '"~ entity ~"'|trans }}" }} <small>{{ "{{ 'Show'|trans }}" }}</small></h2>
+        <div class="col-lg-4">
+            <div class="btn-group pull-right">
+                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    {{ "{{ 'Add'|trans }}" }}
+                </a>
+                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit',{ '"~ identifier ~"': entity."~ identifier ~ " }) }}" }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    {{ "{{ 'Edit'|trans }}" }}
+                </a>
+            </div>
+        </div>
+    </header>
+    <section>
 
-            <tr>
-                <th>{{ field|capitalize }}</th>
+        <div class="alert alert-info">Mensagem de informação.</div>
+        <div class="alert alert-danger">Mensagem de erro.</div>
+        <div class="alert alert-success">Mensagem de sucesso.</div>
 
-            {%- if metadata.type in ['date', 'datetime'] %}
+        <div class="table-responsive">
 
-                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}' }}</td>
+            <table class="table table-hover">
+                <tbody>
+                {%- for field, metadata in fields %}
 
-            {%- else %}
+                    <tr>
+                        <th>{{ "{{ '" ~ field|capitalize ~ "'|trans }}" }}</th>
 
-                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+                    {%- if metadata.type in ['date', 'datetime'] %}
 
-            {%- endif %}
+                        <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}' }}</td>
 
-            </tr>
+                    {%- else %}
 
-        {%- endfor %}
+                        <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
 
-        </tbody>
-    </table>
+                    {%- endif %}
 
+                    </tr>
+
+                {%- endfor %}
+
+                </tbody>
+            </table>
+        </div>
     {% set hide_edit, hide_delete = false, false %}
-    {% include 'crud/views/others/record_actions.html.twig.twig' %}
 {{ "{% endblock %}" }}
 {% endblock body %}

@@ -29,11 +29,11 @@ package { ["php5-common", "libapache2-mod-php5", "php5-cli", "php-apc", "php5-my
   notify => Service["apache2"],
   require => [Exec["apt-get update"], Package['mysql-client'], Package['apache2']],
 }
-php
+
 exec { "/usr/sbin/a2enmod rewrite" :
-unless => "/bin/readlink -e /etc/apache2/mods-enabled/rewrite.load",
-notify => Service[apache2],
-require => Package['apache2']
+  unless => "/bin/readlink -e /etc/apache2/mods-enabled/rewrite.load",
+  notify => Service[apache2],
+  require => Package['apache2'],
 }
 
 # Set up a new VirtualHost

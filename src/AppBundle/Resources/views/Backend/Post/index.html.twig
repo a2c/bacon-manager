@@ -1,0 +1,93 @@
+{% extends 'A2CCoreBundle::layout.html.twig' %}
+
+{% block body -%}
+
+    <header class="row page-header">
+
+        <h2 class="col-lg-8">{{ 'Post'|trans }} <small>{{ 'List'|trans }}</small></h2>
+
+        <div class="col-lg-4">
+            <div class="btn-group pull-right">
+                <a href="#modalSearch" class="btn btn-default" data-toggle="modal">
+                    <span class="glyphicon glyphicon-search"></span>
+                    {{ 'Search'|trans }}
+                </a>
+                <a href="{{ path('post_new') }}" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    {{ 'Add'|trans }}
+                </a>
+            </div>
+        </div>
+
+    </header>
+
+
+    <section>
+
+        <div class="alert alert-info">Mensagem de informação.</div>
+        <div class="alert alert-danger">Mensagem de erro.</div>
+        <div class="alert alert-success">Mensagem de sucesso.</div>
+
+        <div class="table-responsive">
+
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>{{ 'Id'|trans }}</th>
+                        <th>{{ 'Name'|trans }}</th>
+                        <th>{{ 'Date'|trans }}</th>
+                        <th>{{ 'Actions'|trans }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in pagination %}
+                        <tr>
+                            <td><a href="{{ path('post_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.name }}</td>
+                            <td>{% if entity.date %}{{ entity.date|localizeddate('medium','medium',app.request.locale) }}{% endif %}</td>
+                            <td width="140">
+                                <a href="{{ path('post_show', { 'id': entity.id }) }}" class="btn btn-sm btn-default" data-original-title="{{ 'Show'|trans }}">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                </a>
+                                <a href="{{ path('post_edit', { 'id': entity.id }) }}" class="btn btn-sm btn-default" data-original-title="{{ 'Edit'|trans }}">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                                <form class="form-delete-inline" action="{{ path('post_delete', { 'id': entity.id }) }}" method="post">
+                                    <button type="submit" class="btn btn-sm btn-danger" title="" data-target="#modalDelete" data-toggle="modal" data-original-title="{{ 'Remove'|trans }}">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="pull-right">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+    </section>
+<div id="modalDelete" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Remover</h4>
+            </div>
+
+            <div class="modal-body">
+                Você tem certeza que deseja remover este registro?
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-right">
+                    <a class="btn btn-default" data-dismiss="modal" aria-hidden="true">Não</a>
+                    <a class="btn btn-danger confirm_delete">Sim, Quero Remover!</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock body -%}

@@ -45,11 +45,22 @@ class DoctrineCrudGenerator extends BaseGenerator
 
         $this->generateEntityRepository();
 
-        $dir = sprintf('%s/Resources/views/%s', $this->bundle->getPath(), str_replace('\\', '/', $this->entity));
+        $dir = sprintf('%s/Resources/views/%s', $this->bundle->getPath(),'Backend/' . str_replace('\\', '/', $this->entity));
 
         if (!file_exists($dir)) {
             $this->filesystem->mkdir($dir, 0777);
         }
+
+        $newOrderFields = array();
+        $newOrderFields['id'] = $this->metadata->fieldMappings['id'];
+
+        foreach ($this->metadata->fieldMappings as $key => $value) {
+            if ($key != 'id') {
+                $newOrderFields[$key] = $value;
+            }
+        }
+
+        $this->metadata->fieldMappings = $newOrderFields;
 
         $this->generateIndexView($dir);
 
@@ -114,6 +125,42 @@ class DoctrineCrudGenerator extends BaseGenerator
             'entity'            => $this->entity,
             'entity_class'      => $entityClass,
             'namespace'         => $this->bundle->getNamespace(),
+        ));
+    }
+
+    /**
+     * Generates the controller class only.
+     *
+     */
+    protected function generateControllerClass($forceOverwrite)
+    {
+        $dir = $this->bundle->getPath();
+
+        $parts = explode('\\', $this->entity);
+        $entityClass = array_pop($parts);
+        $entityNamespace = implode('\\', $parts);
+
+        $target = sprintf(
+            '%s/Controller/%s/Backend/%sController.php',
+            $dir,
+            str_replace('\\', '/', $entityNamespace),
+            $entityClass
+        );
+
+        if (!$forceOverwrite && file_exists($target)) {
+            throw new \RuntimeException('Unable to generate the controller as it already exists.');
+        }
+
+        $this->renderFile('crud/controller.php.twig', $target, array(
+            'actions'           => $this->actions,
+            'route_prefix'      => $this->routePrefix,
+            'route_name_prefix' => $this->routeNamePrefix,
+            'bundle'            => $this->bundle->getName(),
+            'entity'            => $this->entity,
+            'entity_class'      => $entityClass,
+            'namespace'         => $this->bundle->getNamespace(),
+            'entity_namespace'  => $entityNamespace,
+            'format'            => $this->format,
         ));
     }
 }

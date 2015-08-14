@@ -16,6 +16,7 @@ class {{ entity }}Repository extends EntityRepository
         {%- set alias = entity|lower|first %}
 
         $queryBuilder = $this->createQueryBuilder('{{ alias }}');
+        $queryBuilder->orderBy('{{ alias }}.id');
 
         return $queryBuilder->getQuery();
     }

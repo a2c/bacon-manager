@@ -11,8 +11,12 @@ abstract class AdminController extends Controller
     /**
      * @return \Knp\Component\Pager\Paginator
      */
-    protected function getPagination()
+    protected function getPagination($query,$page,$perPage)
     {
-        return $this->get('knp_paginator');
+        return $this->get('knp_paginator')->paginate(
+            $query,
+            $page,
+            $perPage
+        );
     }
 }
