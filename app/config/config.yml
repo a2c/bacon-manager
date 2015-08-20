@@ -8,6 +8,7 @@ imports:
 parameters:
     locale: "en_US"
     app_name: "A2C Manager"
+    app_short_name: "A2C"
     footer_description : "A2C"
     footer_link: "http://www.a2c.com.br/"
     date.timezone: "America/Sao_Paulo"
@@ -47,6 +48,7 @@ twig:
     globals:
         app_locale: "%locale%"
         appname: "%app_name%"
+        app_short_name: "%app_short_name%"
         footer_description: "%footer_description%"
         footer_link: "%footer_link%"
 # Assetic Configuration

@@ -16,11 +16,8 @@ class PostType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('date')
             ->add('category')
-            ->add('date','date',array(
-                'widget' => 'simple_text',
-                'format' => 'd/M/yyyy'
-            ))
         ;
     }
     

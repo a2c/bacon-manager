@@ -15,9 +15,7 @@
         
         <link rel="shortcut icon" href="images/favicon.ico" />
         <!-- Bootstrap 3.3.4 -->
-        <!--<link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">-->
         <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/css/bootstrap.min.css") }}">
-        <!--<link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/css/bootstrap-theme.min.css") }}" />-->
         <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/chosen/chosen.min.css") }}" />
         <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/datepicker/css/datepicker3.css") }}" />
         <!-- Font Awesome -->
@@ -25,11 +23,9 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
-        <!--<link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">-->
         <link rel="stylesheet" href="{{ asset("bundles/a2ccore/dist/css/AdminLTE.min.css") }}">
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-        <!--<link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">-->
         <link rel="stylesheet" href="{{ asset("bundles/a2ccore/dist/css/skins/_all-skins.min.css") }}">
         
         <script src="{{ asset("bundles/a2ccore/js/admin/modernizr.custom.16572.js") }}"></script>
@@ -51,146 +47,11 @@
         <!-- Site wrapper -->
         <div class="wrapper">
 
-            <header class="main-header">
-            
-                <!-- Logo -->
-                <a href="../../index2.html" class="logo">
-                  <!-- mini logo for sidebar mini 50x50 pixels -->
-                  <span class="logo-mini"><b>A2C</b></span>
-                  <!-- logo for regular state and mobile devices -->
-                  <span class="logo-lg"><b>{{ appname }}</b></span>
-                </a>
-                
-                <!-- Header Navbar: style can be found in header.less -->
-                <nav class="navbar navbar-static-top" role="navigation">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            
-                            <!-- Notifications: style can be found in dropdown.less -->
-                            <li class="dropdown notifications-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o"></i>
-                                    <span class="label label-warning">2</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">Você possui 5 notificações</li>
-                                    <li>
-                                        <!-- inner menu: contains the actual data -->
-                                        <ul class="menu">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> 5 alguma coisa
-                                                </a>
-                                                <li>
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> 5 outra coisa
-                                                </a>
-                                            </li>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="footer"><a href="#">Ver Todos</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- User Account: style can be found in dropdown.less -->
-                            <li class="dropdown user user-menu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <span class="hidden-xs">Nome do usuário</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- Menu Body -->
-                                    <li class="user-body">
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Followers</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Sales</a>
-                                        </div>
-                                        <div class="col-xs-4 text-center">
-                                            <a href="#">Friends</a>
-                                        </div>
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Meus Dados</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sair</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- Control Sidebar Toggle Button -->
-                            <li>
-                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
+            {% include '@A2CCore/partial/header.html.twig' %}
 
             <!-- =============================================== -->
 
-            <!-- Left side column. contains the sidebar -->
-            <aside class="main-sidebar">
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-    
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu">
-                        <li class="header">Menu</li>
-                        <li>
-                            <a href="#">
-                                <i class="fa ion-ios-home"></i> <span>Home</span> <small class="label pull-right bg-green">:D</small>
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa ion-ios-compose-outline"></i> <span>Post</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Listar Posts</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Novo Post</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-share"></i> <span>Multilevel</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                                <li>
-                                    <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                                        <li>
-                                            <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
-                                            <ul class="treeview-menu">
-                                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-                <!-- /.sidebar -->
-            </aside>
+            {% include '@A2CCore/partial/menu.html.twig' %}
 
             <!-- =============================================== -->
 
@@ -225,18 +86,5 @@
             <script src="{{ asset("bundles/a2ccore/dist/js/app.min.js") }}"></script>
             <script src="{{ asset("bundles/a2ccore/bootstrap/slimScroll/jquery.slimscroll.min.js") }}"></script>
         {% endblock %}
-
-        <!-- jQuery 2.1.4 -->
-        <!--<script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
-        <!-- Bootstrap 3.3.4 -->
-        <!--<script src="../../bootstrap/js/bootstrap.min.js"></script>-->
-        <!-- SlimScroll -->
-        <!--<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>-->
-        <!-- FastClick -->
-        <!--<script src="../../plugins/fastclick/fastclick.min.js"></script>-->
-        <!-- AdminLTE App -->
-        <!--<script src="../../dist/js/app.min.js"></script>-->
-        <!-- AdminLTE for demo purposes -->
-        <!--<script src="../../dist/js/demo.js"></script>-->
     </body>
 </html>
