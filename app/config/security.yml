@@ -1,11 +1,13 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        administrators:
+            entity: { class: A2CUserBundle:User, property: username }
+    encoders:
+        A2C\Bundle\UserBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -13,12 +15,19 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
+        default:
             anonymous: ~
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+            http_basic: ~
+            form_login:
+                login_path: /admin/login
+                check_path: /admin/login_check
+            logout:
+                path: /logout
+                target: /login
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/preregister, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/create, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/invite, roles: [ROLE_ADMIN] }
+        - { path: ^/, roles: [ROLE_USER, ROLE_ADMIN] }

@@ -1,3 +1,6 @@
+a2_c_user:
+    resource: "@A2CUserBundle/Resources/config/routing.yml"
+
 a2_c_core:
     resource: "@A2CCoreBundle/Controller/"
     type:     annotation

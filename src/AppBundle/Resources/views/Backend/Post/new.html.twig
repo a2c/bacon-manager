@@ -1,0 +1,19 @@
+{% extends 'A2CCoreBundle::layout.html.twig' %}
+
+{% block body -%}
+    <header class="row page-header">
+
+        <h2 class="col-lg-8">{{ 'Post'|trans }} <small>{{ 'New'|trans }}</small></h2>
+
+    </header>
+    <section>
+
+        <div class="alert alert-info">Mensagem de informação.</div>
+        <div class="alert alert-danger">Mensagem de erro.</div>
+        <div class="alert alert-success">Mensagem de sucesso.</div>
+
+        {{ form(form) }}
+
+        
+    </section>
+{% endblock %}

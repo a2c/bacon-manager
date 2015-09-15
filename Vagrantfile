@@ -11,6 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.network "private_network", ip: "192.168.50.122"
 
     config.vm.synced_folder ".", "/vagrant", type: "nfs"
+    #config.vm.synced_folder ".", "/vagrant", type: "rsync"
 
     config.vm.provision "puppet" do |puppet|
         puppet.manifests_path = "app/vagrant"
