@@ -1,14 +1,12 @@
 applications:
 - disk_quota: 1024M
-  buildpack: php_buildpack
   host: a2c-manager
   name: a2c-manager
   path: .
   domain: mybluemix.net
   instances: 1
   memory: 128M
-dependencies:
-  - name: php
-    version: 5.6.12
-    uri: https://pivotal-buildpacks.s3.amazonaws.com/concourse-binaries/php/php-5.6.12-linux-x64-1441826178.tgz
-    modules: ["bz2", "curl", "dba", "exif", "fileinfo", "ftp", "gd", "gettext", "gmp", "imap", "ldap", "mbstring", "mcrypt", "mysql", "mysqli", "opcache", "openssl", "pcntl", "pdo", "pdo_mysql", "pdo_pgsql", "pdo_sqlite", "pgsql", "pspell", "readline", "snmp", "soap", "sockets", "xsl", "zip", "zlib", "lua", "suhosin", "msgpack", "xdebug", "imagick", "yaf", "redis", "memcache", "igbinary", "ioncube", "phpiredis", "xcache", "protobuf", "protocolbuffers", "mailparse", "mongo", "amqp", "phalcon", "twig", "sundown", "memcached", "intl"]
+  buildpack: https://github.com/cloudfoundry/php-buildpack#v3.2.2
+    env:
+      CF_STAGING_TIMEOUT: 15
+      CF_STARTUP_TIMEOUT: 15
