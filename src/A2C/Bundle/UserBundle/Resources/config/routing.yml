@@ -1,0 +1,9 @@
+logout:
+    path: /logout
+
+login:
+    path: /login
+    defaults: { _controller: A2CUserBundle:Security:login}
+
+login_check:
+    path: /login_check
