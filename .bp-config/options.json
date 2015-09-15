@@ -1,6 +1,5 @@
 {
-  "PHP_VERSION": "{PHP_55_LATEST}",
-  "COMPOSER_VENDOR_DIR": "vendor",
   "WEBDIR": "web",
-  "PHP_EXTENSIONS": [ "bz2", "zlib", "openssl", "fpm", "tokenizer", "curl", "mcrypt", "mbstring", "pdo"]
+  "LIBDIR": "vendor",
+  "PHP_EXTENSIONS": [ "bz2", "zlib", "openssl", "curl", "mcrypt", "mbstring", "pdo","mysql","mysqli","pdo_mysql","Phar"]
 }

@@ -1,3 +1,4 @@
+---
 applications:
 - disk_quota: 1024M
   host: a2c-manager
@@ -6,7 +7,6 @@ applications:
   domain: mybluemix.net
   instances: 1
   memory: 128M
-  buildpack: https://github.com/cloudfoundry/php-buildpack#v3.2.2
+  buildpack: https://github.com/dmikusa-pivotal/cf-php-build-pack.git
     env:
-      CF_STAGING_TIMEOUT: 15
-      CF_STARTUP_TIMEOUT: 15
+      BP_DEBUG: "True"
