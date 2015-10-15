@@ -3,9 +3,9 @@
 namespace A2C\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use A2C\Bundle\CoreBundle\Entity\BaseEntity;
-use Symfony\Component\Security\Core\Role\Role;
-use Symfony\Component\Security\Core\User\UserInterface;
+use FOS\UserBundle\Model\User as BaseUser;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Uecode\Bundle\ApiKeyBundle\Util\ApiKeyGenerator;
 
 /**
  * Class User
@@ -16,170 +16,127 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Entity()
  * @ORM\Table(name="user")
+ * @ORM\HasLifecycleCallbacks()
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
-class User extends BaseEntity implements UserInterface,\Serializable
+class User extends BaseUser
 {
     /**
-     * @ORM\Column(name="username",type="string",length=120,nullable=false)
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $username;
+    protected $id;
 
     /**
-     * @ORM\Column(name="password",type="string",length=255,nullable=false)
+     * @ORM\Column(name="api_key",type="string",length=255,nullable=true)
      */
-    protected $password;
+    protected $apiKey;
 
     /**
-     * @ORM\Column(name="email",type="string",length=200,nullable=false)
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created_at", type="datetime",nullable=false)
      */
-    protected $email;
+    protected $createdAt;
 
     /**
-     * @ORM\Column(name="logged",type="datetime",nullable=true)
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(name="updated_at", type="datetime",nullable=true)
      */
-    protected $logged;
+    protected $updatedAt;
 
     /**
-     * @ORM\Column(name="roles",type="string",length=25,nullable=false)
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
      */
-    protected $roles;
+    protected $deletedAt;
 
-    /**
-     * @ORM\Column(name="gravatar",type="string",length=255,nullable=true)
-     */
-    protected $gravatar;
-
-    /**
-     * @ORM\Column(name="active",type="boolean",nullable=false)
-     */
-    protected $active;
-
-    public function serialize()
+    public function __construct()
     {
-        // TODO: Implement serialize() method.
+        parent::__construct();
+
+        if (in_array('ROLE_API',$this->getRoles())) {
+            $this->setApiKey(ApiKeyGenerator::generate());
+        }
     }
 
-    public function unserialize($serialized)
-    {
-        // TODO: Implement unserialize() method.
-    }
 
-    public function getRoles()
+    /**
+     * @return integer
+     */
+    public function getId()
     {
-        return explode(',',$this->roles);
-    }
-
-    public function getSalt()
-    {
-        // TODO: Implement getSalt() method.
-    }
-
-    public function eraseCredentials()
-    {
-        return;
+        return $this->id;
     }
 
     /**
-     * @return mixed
+     * @param integer $id
      */
-    public function getUsername()
+    public function setId($id)
     {
-        return $this->username;
+        $this->id = $id;
     }
 
     /**
-     * @param mixed $username
+     * @return \DateTime
      */
-    public function setUsername($username)
+    public function getCreatedAt()
     {
-        $this->username = $username;
+        return $this->createdAt;
     }
 
     /**
-     * @return mixed
+     * @param \DateTime $createdAt
      */
-    public function getPassword()
+    public function setCreatedAt(\DateTime $createdAt)
     {
-        return $this->password;
+        $this->createdAt = $createdAt;
     }
 
     /**
-     * @param mixed $password
+     * @return \DateTime
      */
-    public function setPassword($password)
+    public function getUpdatedAt()
     {
-        $this->password = $password;
+        return $this->updatedAt;
     }
 
     /**
-     * @return mixed
+     * @param \DateTime $updatedAt
      */
-    public function getEmail()
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
-        return $this->email;
+        $this->updatedAt = $updatedAt;
     }
 
     /**
-     * @param mixed $email
+     * @return \DateTime
      */
-    public function setEmail($email)
+    public function getDeletedAt()
     {
-        $this->email = $email;
+        return $this->deletedAt;
     }
 
     /**
-     * @return mixed
+     * @param \DateTime $deletedAt
      */
-    public function getLogged()
+    public function setDeletedAt(\DateTime $deletedAt)
     {
-        return $this->logged;
+        $this->deletedAt = $deletedAt;
     }
 
     /**
-     * @param mixed $logged
+     * @param string $apiKey
      */
-    public function setLogged($logged)
+    public function setApiKey($apiKey)
     {
-        $this->logged = $logged;
+        $this->apiKey = $apiKey;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getGravatar()
+    public function getApiKey()
     {
-        return $this->gravatar;
-    }
-
-    /**
-     * @param mixed $gravatar
-     */
-    public function setGravatar($gravatar)
-    {
-        $this->gravatar = $gravatar;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getActive()
-    {
-        return $this->active;
-    }
-
-    /**
-     * @param mixed $active
-     */
-    public function setActive($active)
-    {
-        $this->active = $active;
-    }
-
-    /**
-     * @param mixed $roles
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
+        return $this->apiKey;
     }
 }

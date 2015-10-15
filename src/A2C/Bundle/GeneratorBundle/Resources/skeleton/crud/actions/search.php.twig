@@ -1,0 +1,45 @@
+
+   /**
+{% block phpdoc_method_header %}
+    * Search filter {{ entity }} entities.
+{% endblock phpdoc_method_header %}
+    *
+{% block phpdoc_method_annotations %}
+    {% if 'annotation' == format %}
+* @Route("/search", name="{{ route_name_prefix }}_search")
+    * @Method({"POST","GET"})
+    * @Security("has_role('ROLE_ADMIN')")
+    * @Template()
+    {% endif %}
+{% endblock phpdoc_method_annotations %}
+*/
+{% block method_definition %}
+    public function searchAction(Request $request)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+{% endblock method_body %}
+
+        if ($request->getMethod() === Request::METHOD_POST) {
+
+            $form = $this->createForm(new {{ entity }}FormType(),new {{ entity }}(),array(
+                'search' => true,
+            ));
+
+            $form->handleRequest($request);
+
+            $this->get('session')->set('{{ entity|lower }}_search_session',serialize($form->getData()));
+        } else {
+            $this->get('session')->remove('{{ entity|lower }}_search_session');
+        }
+
+{% block method_return %}
+    {% if 'annotation' == format %}
+        return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
+    {% else %}
+        return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:index.html.twig', array(
+        'entities' => $entities,
+        ));
+    {% endif %}
+{% endblock method_return %}
+}

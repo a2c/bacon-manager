@@ -1,0 +1,26 @@
+<div id="modalSearch" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">{{ 'Search'|trans }}</h4>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" action="{{ path(route) }}" method="post" {{ form_enctype(form) }}>
+                    <div class="box-body">
+                        {{ form_widget(form) }}
+                    </div>
+
+                    <div class="box-footer">
+                            <a href="{{ path(route) }}" class="btn btn-default pull-right"><span class="glyphicon glyphicon-trash"></span> {{ 'Clear'|trans }}</a>
+                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-filter"></span> {{ 'Search'|trans }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+{
+  "name": "Admin Manager",
+  "version": "0.0.1",
+  "authors": [
+    "A2C <a2c@a2c.com.br>"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "admin-lte" : "2.3.0"
+  }
+}

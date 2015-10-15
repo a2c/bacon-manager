@@ -8,6 +8,7 @@
 {% if 'annotation' == format %}
      * @Route("/{id}", name="{{ route_name_prefix }}_show")
      * @Method("GET")
+     * @Security("has_role('ROLE_ADMIN')")
      * @Template()
 {% endif %}
 {% endblock phpdoc_method_annotations %}
@@ -17,12 +18,28 @@
 {% endblock method_definition %}
     {
 {% block method_body %}
-        $em = $this->getDoctrine()->getManager();
+        $breadcumbs = $this->container->get('a2c_breadcrumbs');
 
-        $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
+        $breadcumbs->addItem(array(
+            'title' => '{{ entity }}',
+            'route' => '{{ route_name_prefix }}',
+        ));
+
+        $breadcumbs->addItem(array(
+            'title' => 'Details',
+            'route' => '',
+        ));
+
+        $entity = $this->getDoctrine()->getRepository('{{ bundle }}:{{ entity }}')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find {{ entity }} entity.');
+
+            $this->get('session')->getFlashBag()->add('message', array(
+                'type' => 'error',
+                'message' => 'The registry not Found',
+            ));
+
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
         }
 {% if 'delete' in actions %}
 

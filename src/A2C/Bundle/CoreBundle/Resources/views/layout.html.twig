@@ -11,28 +11,23 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         
-        <title>{{ appname }} - {% block title %}{% endblock %}</title>
+        <title>{{ app_title_default }} {% block title %}{% endblock %}</title>
         
         <link rel="shortcut icon" href="images/favicon.ico" />
         <!-- Bootstrap 3.3.4 -->
-        <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/css/bootstrap.min.css") }}">
-        <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/chosen/chosen.min.css") }}" />
-        <link rel="stylesheet" href="{{ asset("bundles/a2ccore/bootstrap/datepicker/css/datepicker3.css") }}" />
+        <link rel="stylesheet" href="{{ asset("vendor/admin-lte/bootstrap/css/bootstrap.min.css") }}">
+        <link rel="stylesheet" href="{{ asset("vendor/admin-lte/plugins/datepicker/datepicker3.css") }}">
+        <link rel="stylesheet" href="{{ asset("vendor/admin-lte/plugins/colorpicker/bootstrap-colorpicker.min.css") }}">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" href="{{ asset("bundles/a2ccore/dist/css/AdminLTE.min.css") }}">
+        <link rel="stylesheet" href="{{ asset("vendor/admin-lte/dist/css/AdminLTE.min.css") }}">
+
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" href="{{ asset("bundles/a2ccore/dist/css/skins/_all-skins.min.css") }}">
-        
-        <script src="{{ asset("bundles/a2ccore/js/admin/modernizr.custom.16572.js") }}"></script>
-
-        <script>
-            var baseUrl = 'url_base_do_projeto';
-        </script>
+        <link rel="stylesheet" href="{{ asset("vendor/admin-lte/dist/css/skins/_all-skins.min.css") }}">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -42,7 +37,7 @@
         <![endif]-->
     </head>
     
-    <body class="skin-blue fixed sidebar-collapse sidebar-mini">
+    <body class="skin-blue fixed">
         
         <!-- Site wrapper -->
         <div class="wrapper">
@@ -57,7 +52,7 @@
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
-                 {%- block body -%}{%- endblock -%}
+                {%- block body -%}{%- endblock -%}
             </div><!-- /.content-wrapper -->
 
             <footer class="main-footer">
@@ -77,14 +72,11 @@
         <![endif]-->
         
         {% block javascripts %}
-            <script src="{{ asset("bundles/a2ccore/bootstrap/js/bootstrap.min.js") }}"></script>
-            <script src="{{ asset("bundles/a2ccore/bootstrap/chosen/chosen.jquery.min.js") }}"></script>
-            <script src="{{ asset("bundles/a2ccore/bootstrap/datepicker/js/bootstrap-datepicker.min.js") }}"></script>
-            <script src="{{ asset("bundles/a2ccore/js/admin/jquery.validate.min.js") }}"></script>
-            <script src="{{ asset("bundles/a2ccore/js/admin/script.js") }}"></script>
-            <script src="{{ asset("bundles/a2ccore/dist/js/demo.js") }}"></script>
-            <script src="{{ asset("bundles/a2ccore/dist/js/app.min.js") }}"></script>
-            <script src="{{ asset("bundles/a2ccore/bootstrap/slimScroll/jquery.slimscroll.min.js") }}"></script>
+            <script src="{{ asset("vendor/admin-lte/bootstrap/js/bootstrap.min.js") }}"></script>
+            <script src="{{ asset("vendor/admin-lte/plugins/datepicker/bootstrap-datepicker.js") }}"></script>
+            <script src="{{ asset("vendor/admin-lte/dist/js/app.min.js") }}"></script>
+            <script src="{{ asset("vendor/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js") }}"></script>
+            <script src="{{ asset("vendor/admin-lte/plugins/colorpicker/bootstrap-colorpicker.min.js") }}"></script>
         {% endblock %}
     </body>
 </html>

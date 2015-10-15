@@ -8,10 +8,13 @@ imports:
 parameters:
     locale: "en_US"
     app_name: "A2C Manager"
+    app_title_default: "A2C"
     app_short_name: "A2C"
+    app_logo_manager: "http://www.a2c.ag/images/site/2014/logo-a2c.png"
     footer_description : "A2C"
-    footer_link: "http://www.a2c.com.br/"
+    footer_link: "http://www.a2c.ag"
     date.timezone: "America/Sao_Paulo"
+
 
 framework:
     #esi:             ~
@@ -36,6 +39,10 @@ framework:
     fragments:       ~
     http_method_override: true
 
+uecode_api_key:
+    delivery: header #or header
+    parameter_name: X-Authorization
+
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
@@ -44,13 +51,16 @@ twig:
         format: d/m/Y
         timezone: "%date.timezone%"
     form:
-        resources: ['bootstrap_3_layout.html.twig']
+        resources: ['bootstrap_3_horizontal_layout.html.twig']
     globals:
         app_locale: "%locale%"
         appname: "%app_name%"
+        app_title_default: "%app_title_default%"
         app_short_name: "%app_short_name%"
+        app_logo_manager: "%app_logo_manager%"
         footer_description: "%footer_description%"
         footer_link: "%footer_link%"
+
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
@@ -85,6 +95,15 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        filters:
+            softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: admin
+    user_class: A2C\Bundle\UserBundle\Entity\User
 
 # Swiftmailer Configuration
 swiftmailer:

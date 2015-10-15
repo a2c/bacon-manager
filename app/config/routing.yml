@@ -1,10 +1,8 @@
-a2_c_user:
-    resource: "@A2CUserBundle/Resources/config/routing.yml"
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    prefix: /admin/
+
 
 a2_c_core:
     resource: "@A2CCoreBundle/Controller/"
-    type:     annotation
-
-app_backend:
-    resource: "@AppBundle/Controller/Backend"
     type:     annotation

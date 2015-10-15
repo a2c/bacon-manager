@@ -7,7 +7,8 @@
 {% if 'annotation' == format %}
      * @Route("/", name="{{ route_name_prefix }}_create")
      * @Method("POST")
-     * @Template("{{ bundle }}:{{ entity }}:new.html.twig")
+     * @Security("has_role('ROLE_ADMIN')")
+     * @Template("{{ bundle }}:Backend/{{ entity }}:new.html.twig")
 {% endif %}
 {% endblock phpdoc_method_annotations %}
      */
@@ -16,28 +17,35 @@
 {% endblock method_definition %}
     {
 {% block method_body %}
-        $entity = new {{ entity_class }}();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+        $breadcumbs = $this->container->get('a2c_breadcrumbs');
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+        $breadcumbs->addItem(array(
+            'title' => '{{ entity }}',
+            'route' => '{{ route_name_prefix }}',
+        ));
 
-            {% if 'show' in actions -%}
-                return $this->redirect($this->generateUrl('{{ route_name_prefix }}_show', array('id' => $entity->getId())));
-            {%- else -%}
-                return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
-            {%- endif %}
+        $breadcumbs->addItem(array(
+            'title' => 'New',
+            'route' => '',
+        ));
 
+        $form = $this->createForm(new {{ entity }}FormType(),new {{ entity }}());
+
+        $handler = new {{ entity }}FormHandler(
+            $form,
+            $request,
+            $this->getDoctrine()->getManager(),
+            $this->get('session')->getFlashBag()
+        );
+
+        if ($id = $handler->save()) {
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
         }
 {% endblock method_body %}
 
 {% block method_return %}
 {% if 'annotation' == format %}
         return array(
-            'entity' => $entity,
             'form'   => $form->createView(),
         );
 {% else %}
@@ -50,22 +58,4 @@
     }
 
 {% block form %}
-    /**
-     * Creates a form to create a {{ entity }} entity.
-     *
-     * @param {{ entity_class }} $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm({{ entity_class }} $entity)
-    {
-        $form = $this->createForm(new {{ entity_class }}Type(), $entity, array(
-            'action' => $this->generateUrl('{{ route_name_prefix }}_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
-        return $form;
-    }
 {% endblock form %}

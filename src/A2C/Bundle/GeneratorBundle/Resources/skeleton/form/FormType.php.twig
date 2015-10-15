@@ -1,11 +1,11 @@
 <?php
 
-namespace {{ namespace }}\Form{{ entity_namespace ? '\\' ~ entity_namespace : '' }};
+namespace {{ namespace }}\Form\Type;
 
 {% block use_statements %}
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 {% endblock use_statements %}
 
 {% block class_definition %}
@@ -20,22 +20,33 @@ class {{ form_class }} extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-        {%- for field in fields %}
+        if ($options['search']) {
+            $builder
+            {%- for field in fields %}
 
-            ->add('{{ field }}')
-        {%- endfor %}
+                ->add('{{ field }}')->setRequired(false)
+            {%- endfor %}
 
-        ;
+            ;
+        } else {
+            $builder
+            {%- for field in fields %}
+
+                ->add('{{ field }}')
+            {%- endfor %}
+
+            ;
+        }
     }
     {% endif %}
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'search'     => false,
             'data_class' => '{{ namespace }}\Entity{{ entity_namespace ? '\\' ~ entity_namespace : '' }}\{{ entity_class }}'
         ));
     }

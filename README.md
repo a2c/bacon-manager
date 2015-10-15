@@ -1,24 +1,57 @@
-<<<<<<< HEAD
-a2c_manager
-===========
+# A2C Manager
 
-A Symfony project created on August 4, 2015, 9:03 pm.
-=======
-This README.md file is displayed on your project page. You should edit this 
-file to describe your project, including instructions for building and 
-running the project, pointers to the license under which you are making the 
-project available, and anything else you think would be useful for others to
-know.
+![A2C logo](http://www.a2c.com.br/assinatura_2014/images/logo_assinatura.jpg)
 
-We have created an empty license.txt file for you. Well, actually, it says,
-"<Replace this text with the license you've chosen for your project.>" We 
-recommend you edit this and include text for license terms under which you're
-making your code available. A good resource for open source licenses is the 
-[Open Source Initiative](http://opensource.org/).
+Este Readme é um passo a passo de como instalar o A2C Manager na sua maquina
 
-Be sure to update your project's profile with a short description and 
-eye-catching graphic.
+## Vagrant
 
-Finally, consider defining some sprints and work items in Track & Plan to give 
-interested developers a sense of your cadence and upcoming enhancements.
->>>>>>> 1e73f5a1b2ef7d83bc1044c06a6de5d0ddc42d8a
+Precisamos descrever
+
+## Virtual Host Apache
+    sudo nano /etc/apache2/sites-available/a2c_manager.conf
+
+Adicionar as linhas abaixo no arquivo criado
+
+	<VirtualHost *:80>
+	    ServerName a2c_manager.dev
+	
+	    SetEnv APP_ENV 'dev'
+	
+	    DocumentRoot /var/www/web
+	    <Directory /var/www/web>
+	        AllowOverride All
+	        Order Allow,Deny
+	        Allow from All
+	
+	        <IfModule mod_rewrite.c>
+	            Options -MultiViews
+	            RewriteEngine On
+	            RewriteCond %{REQUEST_FILENAME} !-f
+	            RewriteRule ^(.*)$ app.php [QSA,L]
+	        </IfModule>
+	    </Directory>
+	
+	    # uncomment the following lines if you install assets as symlinks
+	    # or run into problems when compiling LESS/Sass/CoffeScript assets
+	    # <Directory /var/www>
+	    #     Options FollowSymlinks
+	    # </Directory>
+	
+	    ErrorLog /var/log/apache2/a2c_manager_error.log
+	    CustomLog /var/log/apache2/a2c_manager_access.log combined
+	</VirtualHost>
+	
+Depois de criar o arquivo é necessario habilitar o ele para isso devemos executar o seguinte comando no terminal
+
+    sudo a2ensite a2c_manager.conf
+    sudo service apache2 restart
+
+## Adicionando o projeto no hosts
+Adicionar a seguinte linha no **hosts**
+
+	192.168.50.123 a2c_manager.dev 
+   
+## Padrões de desenvolvimento
+ - Gulp
+ - Boas praticas

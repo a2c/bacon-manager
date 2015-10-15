@@ -1,33 +1,41 @@
-# To get started with security, check out the documentation:
-# http://symfony.com/doc/current/book/security.html
+# app/config/security.yml
 security:
-    providers:
-        administrators:
-            entity: { class: A2CUserBundle:User, property: username }
+
     encoders:
-        A2C\Bundle\UserBundle\Entity\User:
-            algorithm: bcrypt
-            cost: 12
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_USER:        null
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+        db:
+            id: uecode.api_key.provider.user_provider
 
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-
-        default:
-            anonymous: ~
-            http_basic: ~
+        admin:
+            pattern: /admin(.*)
             form_login:
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager
                 login_path: /admin/login
                 check_path: /admin/login_check
+                default_target_path: /admin
             logout:
-                path: /logout
-                target: /login
+                path: /admin/logout
+                target: /
+            anonymous: true
+        api:
+            pattern: ^/api/*
+            api_key: true
+            stateless: true
+            provider: db # Required if you have multiple providers and firewalls
+
     access_control:
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/preregister, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/create, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/invite, roles: [ROLE_ADMIN] }
-        - { path: ^/, roles: [ROLE_USER, ROLE_ADMIN] }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }

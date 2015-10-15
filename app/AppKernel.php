@@ -20,8 +20,16 @@ class AppKernel extends Kernel
             //A2C Core
             new A2C\Bundle\CoreBundle\A2CCoreBundle(),
 
+            //A2C Security
+            new FOS\UserBundle\FOSUserBundle(),
+
+            new A2C\Bundle\UserBundle\A2CUserBundle(),
+
             //Pagination
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+
+            // ApiKey
+            new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
 
             new AppBundle\AppBundle(),
             new A2C\Bundle\UserBundle\A2CUserBundle(),
@@ -33,6 +41,7 @@ class AppKernel extends Kernel
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
             $bundles[] = new A2C\Bundle\GeneratorBundle\A2CGeneratorBundle();
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
         }
 
         return $bundles;
@@ -41,13 +50,5 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
-    }
-
-    public function getCacheDir()
-    {
-        if ($this->getEnvironment() == 'dev')
-            return '/tmp/cache/' . $this->getEnvironment() . '/';
-        else
-            return parent::getCacheDir();
     }
 }
