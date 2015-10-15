@@ -31,8 +31,8 @@ class AppKernel extends Kernel
             // ApiKey
             new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
 
+            //Aplication
             new AppBundle\AppBundle(),
-            new A2C\Bundle\UserBundle\A2CUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
