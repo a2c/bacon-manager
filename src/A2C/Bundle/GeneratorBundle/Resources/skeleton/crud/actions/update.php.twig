@@ -7,7 +7,8 @@
 {% if 'annotation' == format %}
      * @Route("/{id}", name="{{ route_name_prefix }}_update")
      * @Method("PUT")
-     * @Template("{{ bundle }}:{{ entity }}:edit.html.twig")
+     * @Security("has_role('ROLE_ADMIN')")
+     * @Template("{{ bundle }}:Backend/{{ entity }}:edit.html.twig")
 {% endif %}
 {% endblock phpdoc_method_annotations %}
      */
@@ -16,22 +17,42 @@
 {% endblock method_definition %}
     {
 {% block method_body %}
-        $em = $this->getDoctrine()->getManager();
+        $breadcumbs = $this->container->get('a2c_breadcrumbs');
 
-        $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
+        $breadcumbs->addItem(array(
+            'title' => '{{ entity }}',
+            'route' => '{{ route_name_prefix }}',
+        ));
+
+        $breadcumbs->addItem(array(
+            'title' => 'Edit',
+            'route' => '',
+        ));
+
+        $entity = $this->getDoctrine()->getRepository('{{ bundle }}:{{ entity }}')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find {{ entity }} entity.');
+
+            $this->get('session')->getFlashBag()->add('message', array(
+                'type' => 'error',
+                'message' => 'Registry not Found',
+            ));
+
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
         }
 
+        $form = $this->createForm(new {{ entity_class }}FormType(), $entity);
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isValid()) {
-            $em->flush();
+        $handler = new {{ entity }}FormHandler(
+            $form,
+            $request,
+            $this->getDoctrine()->getManager(),
+            $this->get('session')->getFlashBag()
+        );
 
-            return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
+        if ($id = $handler->save()) {
+            return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
         }
 {% endblock method_body %}
 
@@ -39,13 +60,13 @@
 {% if 'annotation' == format %}
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'        => $form->createView(),
             'delete_form' => $deleteForm->createView(),
         );
 {% else %}
         return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'        => $form->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
 {% endif %}

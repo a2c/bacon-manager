@@ -4,6 +4,7 @@ namespace A2C\Bundle\CoreBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 
 abstract class AdminController extends Controller
@@ -18,5 +19,15 @@ abstract class AdminController extends Controller
             $page,
             $perPage
         );
+    }
+
+    /**
+     * Cria um formulário para deletar um registro da base de dados.
+     *
+     * @return Form
+     */
+    public function createDeleteForm()
+    {
+        return $this->createFormBuilder()->add('id', 'hidden')->getForm();
     }
 }

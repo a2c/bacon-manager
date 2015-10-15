@@ -1,4 +1,57 @@
-a2c_manager
-===========
+# A2C Manager
 
-A Symfony project created on August 4, 2015, 9:03 pm.
+![A2C logo](http://www.a2c.com.br/assinatura_2014/images/logo_assinatura.jpg)
+
+Este Readme é um passo a passo de como instalar o A2C Manager na sua maquina
+
+## Vagrant
+
+Precisamos descrever
+
+## Virtual Host Apache
+    sudo nano /etc/apache2/sites-available/a2c_manager.conf
+
+Adicionar as linhas abaixo no arquivo criado
+
+	<VirtualHost *:80>
+	    ServerName a2c_manager.dev
+	
+	    SetEnv APP_ENV 'dev'
+	
+	    DocumentRoot /var/www/web
+	    <Directory /var/www/web>
+	        AllowOverride All
+	        Order Allow,Deny
+	        Allow from All
+	
+	        <IfModule mod_rewrite.c>
+	            Options -MultiViews
+	            RewriteEngine On
+	            RewriteCond %{REQUEST_FILENAME} !-f
+	            RewriteRule ^(.*)$ app.php [QSA,L]
+	        </IfModule>
+	    </Directory>
+	
+	    # uncomment the following lines if you install assets as symlinks
+	    # or run into problems when compiling LESS/Sass/CoffeScript assets
+	    # <Directory /var/www>
+	    #     Options FollowSymlinks
+	    # </Directory>
+	
+	    ErrorLog /var/log/apache2/a2c_manager_error.log
+	    CustomLog /var/log/apache2/a2c_manager_access.log combined
+	</VirtualHost>
+	
+Depois de criar o arquivo é necessario habilitar o ele para isso devemos executar o seguinte comando no terminal
+
+    sudo a2ensite a2c_manager.conf
+    sudo service apache2 restart
+
+## Adicionando o projeto no hosts
+Adicionar a seguinte linha no **hosts**
+
+	192.168.50.123 a2c_manager.dev 
+   
+## Padrões de desenvolvimento
+ - Gulp
+ - Boas praticas

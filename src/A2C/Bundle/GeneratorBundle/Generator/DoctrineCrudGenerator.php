@@ -30,7 +30,7 @@ class DoctrineCrudGenerator extends BaseGenerator
     {
         $this->routePrefix = $routePrefix;
         $this->routeNamePrefix = str_replace('/', '_', $routePrefix);
-        $this->actions = $needWriteActions ? array('index', 'show', 'new', 'edit', 'delete') : array('index', 'show');
+        $this->actions = $needWriteActions ? array('index', 'search' , 'show', 'new', 'edit', 'delete') : array('index', 'show');
 
         if (count($metadata->identifier) != 1) {
             throw new \RuntimeException('The CRUD generator does not support entity classes with multiple or no primary keys.');
@@ -43,7 +43,7 @@ class DoctrineCrudGenerator extends BaseGenerator
 
         $this->generateControllerClass($forceOverwrite);
 
-        $this->generateEntityRepository();
+        $this->generateEntityRepository($metadata);
 
         $dir = sprintf('%s/Resources/views/%s', $this->bundle->getPath(),'Backend/' . str_replace('\\', '/', $this->entity));
 
@@ -76,7 +76,6 @@ class DoctrineCrudGenerator extends BaseGenerator
             $this->generateEditView($dir);
         }
 
-        //$this->generateTestClass();
         $this->generateConfiguration();
     }
 
@@ -112,15 +111,15 @@ class DoctrineCrudGenerator extends BaseGenerator
         }
     }
 
-    protected function generateEntityRepository()
+    protected function generateEntityRepository($metadata)
     {
         $parts = explode('\\', $this->entity);
         $entityClass = array_pop($parts);
         $entityNamespace = implode('\\', $parts);
 
         $target = $this->bundle->getPath() . '/Entity/Repository/' . $entityClass . 'Repository.php';
-
         $this->renderFile('crud/entity/repository.php.twig', $target, array(
+            'fields'            => $this->metadata->fieldMappings,
             'bundle'            => $this->bundle->getName(),
             'entity'            => $this->entity,
             'entity_class'      => $entityClass,
@@ -162,5 +161,30 @@ class DoctrineCrudGenerator extends BaseGenerator
             'entity_namespace'  => $entityNamespace,
             'format'            => $this->format,
         ));
+    }
+
+    /**
+     * Returns an array of fields. Fields can be both column fields and
+     * association fields.
+     *
+     * @param  ClassMetadataInfo $metadata
+     * @return array             $fields
+     */
+    private function getFieldsFromMetadata(ClassMetadataInfo $metadata)
+    {
+        $fields = (array) $metadata->fieldNames;
+
+        // Remove the primary key field if it's not managed manually
+        if (!$metadata->isIdentifierNatural()) {
+            $fields = array_diff($fields, $metadata->identifier);
+        }
+
+        foreach ($metadata->associationMappings as $fieldName => $relation) {
+            if ($relation['type'] !== ClassMetadataInfo::ONE_TO_MANY) {
+                $fields[] = $fieldName;
+            }
+        }
+
+        return $fields;
     }
 }

@@ -4,54 +4,87 @@
 
 {% block body %}
 {{ "{% block body -%}" }}
-    <header class="row page-header">
+        <section class="content-header">
+            <h1>
+                {{ "{{ '"~ entity ~"'|trans }}" }}
+                <small>{{ "{{ 'Details'|trans }}" }}</small>
+            </h1>
+            {{ "{{ a2c_breadcrumbs_render() }}" }}
+        </section>
 
-        <h2 class="col-lg-8">{{ "{{ '"~ entity ~"'|trans }}" }} <small>{{ "{{ 'Show'|trans }}" }}</small></h2>
-        <div class="col-lg-4">
-            <div class="btn-group pull-right">
-                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}" class="btn btn-success">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    {{ "{{ 'Add'|trans }}" }}
-                </a>
-                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit',{ '"~ identifier ~"': entity."~ identifier ~ " }) }}" }}" class="btn btn-default">
-                    <span class="glyphicon glyphicon-edit"></span>
-                    {{ "{{ 'Edit'|trans }}" }}
-                </a>
+        <section class="content">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <section class="row">
+                        <div class="col-lg-4">
+                            <div class="btn-group">
+                                <a href="{{ "{{ path('" ~ route_name_prefix ~ "') }}" }}" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-th-list"></span>
+                                    {{ "{{ 'List'|trans }}" }}
+                                </a>
+                                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                    {{ "{{ 'New'|trans }}" }}
+                                </a>
+                                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_edit',{id: entity."~ identifier ~"}) }}" }}" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    {{ "{{ 'Edit'|trans }}" }}
+                                </a>
+                                <button type="button" class="btn btn-danger" title="" data-target="#modalDelete" data-toggle="modal">
+                                    <span class="glyphicon glyphicon-remove"></span> {{ "{{ 'Remove'|trans }}" }}
+                                </button>
+                                {{  "{% embed 'A2CCoreBundle:partial:modalDelete.html.twig' with {
+                                        form: delete_form,
+                                        route: '" ~ route_name_prefix ~ "_delete',
+                                        id: entity."~ identifier ~"
+                                    } %} " }}
+                                {{  "{% endembed %}" }}
+                            </div>
+                        </div>
+                    </section>
+                    {{ "{% include 'A2CCoreBundle:partial:message.html.twig' %}" }}
+                </div>
+                <div class="box-body">
+                    <div class="table-responsive">
+
+                        <table class="table table-hover">
+                            <tbody>
+                            {%- for field, metadata in fields %}
+
+                                <tr>
+                                    <th>{{ "{{ '" ~ field|capitalize ~ "'|trans }}" }}</th>
+
+                                    {%- if metadata.type in ['date', 'datetime'] %}
+
+                                        {%- if metadata.type == 'datetime' %}
+
+                                            <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ "|localizeddate('medium','medium',app.request.locale) }}{% endif %}" }}</td>
+
+                                        {%- else %}
+
+                                            <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ "|localizeddate('medium','none',app.request.locale) }}{% endif %}" }}</td>
+
+                                        {%- endif %}
+
+                                    {%- elseif metadata.type in ['boolean'] %}
+
+                                        <td>{{ "{{ entity." ~ field|replace({'_': ''})  ~ " ? 'Yes'|trans : 'No'|trans " ~" }}" }}</td>
+
+                                    {%- else %}
+
+                                        <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+
+                                    {%- endif %}
+
+                                </tr>
+
+                            {%- endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </div>
-    </header>
-    <section>
-
-        <div class="alert alert-info">Mensagem de informação.</div>
-        <div class="alert alert-danger">Mensagem de erro.</div>
-        <div class="alert alert-success">Mensagem de sucesso.</div>
-
-        <div class="table-responsive">
-
-            <table class="table table-hover">
-                <tbody>
-                {%- for field, metadata in fields %}
-
-                    <tr>
-                        <th>{{ "{{ '" ~ field|capitalize ~ "'|trans }}" }}</th>
-
-                    {%- if metadata.type in ['date', 'datetime'] %}
-
-                        <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}' }}</td>
-
-                    {%- else %}
-
-                        <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
-
-                    {%- endif %}
-
-                    </tr>
-
-                {%- endfor %}
-
-                </tbody>
-            </table>
-        </div>
-    {% set hide_edit, hide_delete = false, false %}
+        </section>
 {{ "{% endblock %}" }}
 {% endblock body %}

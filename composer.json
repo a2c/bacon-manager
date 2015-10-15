@@ -22,7 +22,11 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "knplabs/knp-paginator-bundle": "dev-master",
         "twig/extensions": "dev-master",
-        "fzaninotto/faker": "^1.5"
+        "fzaninotto/faker": "^1.5",
+        "gedmo/doctrine-extensions": "master-dev",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "doctrine/doctrine-fixtures-bundle": "^2.2",
+        "uecode/api-key-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

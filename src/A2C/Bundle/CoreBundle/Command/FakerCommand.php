@@ -53,6 +53,9 @@ class FakerCommand extends ContainerAwareCommand
 
         $entities[] = 'no';
 
+        //Remove o BaseEntity do array autocomplete
+        unset ($entities[array_search('A2C\Bundle\CoreBundle\Entity\BaseEntity',$entities)]);
+
         $validation = function ($entity) use ($entities) {
 
             if (!in_array($entity, array_values($entities))) {

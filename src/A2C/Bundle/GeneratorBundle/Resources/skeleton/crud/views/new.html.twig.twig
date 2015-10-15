@@ -4,21 +4,41 @@
 
 {% block body %}
 {{ "{% block body -%}" }}
-    <header class="row page-header">
 
-        <h2 class="col-lg-8">{{ "{{ '"~ entity ~"'|trans }}" }} <small>{{ "{{ 'New'|trans }}" }}</small></h2>
+    <section class="content-header">
+        <h1>
+            {{ "{{ '"~ entity ~"'|trans }}" }}
+            <small>{{ "{{ 'New'|trans }}" }}</small>
+        </h1>
+        {{ "{{ a2c_breadcrumbs_render() }}" }}
+    </section>
 
-    </header>
-    <section>
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <section class="row">
+                    <div class="col-lg-4">
+                        <div class="btn-group">
+                            <a href="{{ "{{ path('" ~ route_name_prefix ~ "') }}" }}" class="btn btn-default">
+                                <span class="glyphicon glyphicon-th-list"></span>
+                                {{ "{{ 'List'|trans }}" }}
+                            </a>
+                        </div>
+                    </div>
+                </section>
+                {{ "{% include 'A2CCoreBundle:partial:message.html.twig' %}" }}
+            </div>
+            {{ "{{ form_start(form, { action : path('" ~ route_name_prefix ~ "_create') }) }}" }}
+                <div class="box-body">
+                    {{ '{{ form_widget(form) }}' }}
+                </div>
 
-        <div class="alert alert-info">Mensagem de informação.</div>
-        <div class="alert alert-danger">Mensagem de erro.</div>
-        <div class="alert alert-success">Mensagem de sucesso.</div>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> {{ "{{ 'Submit'|trans }}" }}</button>
+                </div>
+            {{ "{{ form_end(form) }}" }}
 
-        {{ '{{ form(form) }}' }}
-
-        {% set hide_edit, hide_delete = true, true %}
-
+        </div>
     </section>
 {{ "{% endblock %}" }}
 {% endblock body %}
