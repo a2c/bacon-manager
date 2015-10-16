@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 {%- endif %}
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use \PHPExcel;
 {% if 'annotation' == format -%}
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -59,6 +60,10 @@ class {{ entity_class }}Controller extends AdminController
 
     {%- if 'show' in actions %}
         {%- include 'crud/actions/show.php.twig' %}
+    {%- endif %}
+
+    {%- if 'export' in actions %}
+        {%- include 'crud/actions/export.php.twig' %}
     {%- endif %}
 
     {%- if 'delete' in actions %}

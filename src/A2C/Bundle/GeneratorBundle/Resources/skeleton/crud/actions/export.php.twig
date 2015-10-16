@@ -1,0 +1,63 @@
+    
+    /**
+{% block phpdoc_method_header %}
+     * Exports a {{ entity }} entity.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/export", name="{{ route_name_prefix }}_export")
+     * @Security("has_role('ROLE_ADMIN')")
+     * @Method("GET")
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function exportAction($sort, $direction)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+
+        if ($this->get('session')->has('{{ entity|lower }}_search_session')) {
+            $objSerialize = $this->get('session')->get('{{ entity|lower }}_search_session');
+            $entity = unserialize($objSerialize);
+            $query = $this->getDoctrine()->getRepository('AppBundle:{{ entity }}')->getQueryPagination($entity,$sort,$direction);
+        } else {
+            $entity = new {{ entity }}();
+            $query = $this->getDoctrine()->getRepository('AppBundle:{{ entity }}')->getQueryPagination($entity,$sort,$direction);
+        }
+
+        $form = $this->createForm(new {{ entity }}FormType(),$entity,array(
+            'search' => true,
+        ));
+
+        $translator = $this->get('translator');
+
+        $office = new PHPOfficeExcel(sprintf(
+            '%s %s',
+            $translator->trans('Report of'),
+            $translator->trans('{{ entity }}')
+        ));
+
+        $data = $query->getArrayResult();
+        $header = array();
+        
+        foreach($data[0] as $k => $v)  {
+            $header[$k] = $k;
+        }
+
+        $office
+            ->setHeader($header)
+            ->setData($data)
+            ->build()
+        ;
+
+{% endblock method_body %}
+
+{% block method_return %}
+        return $office->createResponse();
+{% endblock method_return %}
+    }
+
+{% block form %}
+{% endblock form %}

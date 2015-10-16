@@ -27,6 +27,11 @@ $collection->add('{{ route_name_prefix }}_new', new Route('/new', array(
     '_controller' => '{{ bundle }}:{{ entity }}:new',
 )));
 
+{% if 'export' in actions %}
+$collection->add('{{ route_name_prefix }}_export', new Route('/export', array(
+    '_controller' => '{{ bundle }}:{{ entity }}:export',
+)));
+
 $collection->add('{{ route_name_prefix }}_create', new Route(
     '/create',
     array('_controller' => '{{ bundle }}:{{ entity }}:create'),
