@@ -14,13 +14,18 @@ use Uecode\Bundle\ApiKeyBundle\Util\ApiKeyGenerator;
  * @author Adan Felipe Medeiros<adan.grg@gmail.com>
  * @version 1.0
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="A2C\Bundle\UserBundle\Entity\Repository\UserRepository")
  * @ORM\Table(name="user")
  * @ORM\HasLifecycleCallbacks()
  * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class User extends BaseUser
 {
+    /**
+     * @var integer
+     */
+    const PER_PAGE = 20;
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -58,7 +63,6 @@ class User extends BaseUser
             $this->setApiKey(ApiKeyGenerator::generate());
         }
     }
-
 
     /**
      * @return integer

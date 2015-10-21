@@ -6,3 +6,7 @@ fos_user:
 a2_c_core:
     resource: "@A2CCoreBundle/Controller/"
     type:     annotation
+
+a2_c_user:
+    resource: "@A2CUserBundle/Controller/"
+    type: annotation
