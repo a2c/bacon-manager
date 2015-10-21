@@ -1,5 +1,0 @@
-{
-  "WEBDIR": "web",
-  "LIBDIR": "vendor",
-  "PHP_EXTENSIONS": [ "bz2", "zlib", "openssl", "curl", "mcrypt", "mbstring", "pdo","mysql","mysqli","pdo_mysql","Phar"]
-}
