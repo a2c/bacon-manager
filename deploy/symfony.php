@@ -21,6 +21,7 @@ set('writable_dirs', ['app/cache', 'app/logs']);
 set('assets', ['web/css', 'web/images', 'web/js']);
 
 // Environment vars
+env('composer_options', 'install  --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction');
 env('env_vars', 'SYMFONY_ENV=prod');
 env('env', 'prod');
 
@@ -80,15 +81,24 @@ task('deploy:cache:warmup', function () {
 
 })->desc('Warm up cache');
 
+/**
+ * clean cache
+ */
+task('deploy:cache:clean', function () {
 
-// /**
-//  * Migrate database
-//  */
-// task('database:migrate', function () {
+    run('php {{release_path}}/' . trim(get('bin_dir'), '/') . '/console c:c  --env={{env}}');
 
-//     run('php {{release_path}}/' . trim(get('bin_dir'), '/') . '/console doctrine:migrations:migrate --env={{env}} --no-debug --no-interaction');
+})->desc('clean cache');
 
-// })->desc('Migrate database');
+
+/**
+ * Migrate database
+ */
+task('database:migrate', function () {
+
+    run('php {{release_path}}/' . trim(get('bin_dir'), '/') . '/console d:s:u --env={{env}} --force');
+
+})->desc('Migrate database');
 
 
 /**
@@ -110,19 +120,21 @@ after('deploy:update_code', 'deploy:clear_controllers');
 task('deploy:update_dependencies', function () {
     writeln("Updating npm libraries...");
     run("npm update");
+})->desc('Updating dependencies');
 
+
+task('deploy:bower', function () {
+    cd('{{release_path}}');
     writeln("Updating bower packages...");
-    run("bower update");
+    run("bower install --allow-root");
 })->desc('Updating dependencies');
 
 /**
- * Running gulp
+ * Create cache dir
  */
-task('deploy:gulp', function () {
-    writeln("Compiling LESS sources...");
-    run("./node_modules/.bin/gulp");
-})->desc("Running gulp");
-
+task('deploy:cache_chmod', function () {
+    run("chmod -Rf 777 {{cache_dir}}");
+})->desc('Create cache dir');
 
 
 /**
@@ -137,12 +149,14 @@ task('deploy', [
     'deploy:writable',
     'deploy:assets',
     'deploy:vendors',
-    'deploy:gulp',
     'deploy:update_dependencies',
     'deploy:assetic:dump',
     'deploy:cache:warmup',
+    'deploy:cache:clean',
     'deploy:symlink',
     'cleanup',
+    'deploy:cache_chmod',
+    'deploy:bower',
 ])->desc('Deploy your project');
 
 after('deploy', 'success');
