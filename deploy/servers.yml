@@ -1,34 +1,18 @@
-# # Servidor de homologacao
-# homolog:
-#   host: localhost 
-#   port: 80 
-#   user: root
-#   password: 123 
-#   stage: homologacao
-#   deploy_path: /var/www/test
-
-# # Servidor de produção 01
-# production:
-#   host: localhost
-#   port: 80
-#   user: root
-#   password: 123
-#   stage: producao
-#   deploy_path: /var/www/test
-
+# Servidor de homologacao
 homolog:
-  host: 192.168.122.1
-  port: 22
-  user: devadmin
-  password: ssh#1sec87!
+  host: localhost 
+  port: 80 
+  user: root
+  password: 123 
   stage: homologacao
-  deploy_path: /var/www/a2c/mateus_guerra/a2c-manager-test
+  deploy_path: /var/www/test
 
 # Servidor de produção 01
 production:
-  host: 192.168.122.1
-  port: 22
-  user: devadmin
-  password: ssh#1sec87!
+  host: localhost
+  port: 80
+  user: root
+  password: 123
   stage: producao
-  deploy_path: /var/www/a2c/mateus_guerra/a2c-manager-test
+  deploy_path: /var/www/test
+
