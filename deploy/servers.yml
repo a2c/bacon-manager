@@ -1,0 +1,18 @@
+# Servidor de homologacao
+homolog:
+  host: localhost 
+  port: 80 
+  user: root
+  password: 123 
+  stage: homologacao
+  deploy_path: /var/www/test
+
+# Servidor de produção 01
+production:
+  host: localhost
+  port: 80
+  user: root
+  password: 123
+  stage: producao
+  deploy_path: /var/www/test
+
