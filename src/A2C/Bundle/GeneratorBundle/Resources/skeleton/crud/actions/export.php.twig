@@ -6,7 +6,7 @@
      *
 {% block phpdoc_method_annotations %}
 {% if 'annotation' == format %}
-     * @Route("/export", name="{{ route_name_prefix }}_export")
+     * @Route("/export", defaults={"page"=1, "sort"="id", "direction"="asc"}, name="{{ route_name_prefix }}_export")
      * @Security("has_role('ROLE_ADMIN')")
      * @Method("GET")
 {% endif %}

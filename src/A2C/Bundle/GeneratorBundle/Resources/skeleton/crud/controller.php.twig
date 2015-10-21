@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 {%- endif %}
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use \PHPExcel;
 {% if 'annotation' == format -%}
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -17,6 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 {%- endif %}
 
 use A2C\Bundle\CoreBundle\Controller\AdminController;
+use A2C\Bundle\CoreBundle\Office\PHPExcel as PHPOfficeExcel;
 use {{ namespace }}\Entity\{{ entity }};
 {% if 'new' in actions or 'edit' in actions %}
 use {{ namespace }}\Form\Type\{{ entity }}FormType;
@@ -58,12 +58,12 @@ class {{ entity_class }}Controller extends AdminController
         {%- include 'crud/actions/update.php.twig' %}
     {%- endif %}
 
-    {%- if 'show' in actions %}
-        {%- include 'crud/actions/show.php.twig' %}
-    {%- endif %}
-
     {%- if 'export' in actions %}
         {%- include 'crud/actions/export.php.twig' %}
+    {%- endif %}
+
+    {%- if 'show' in actions %}
+        {%- include 'crud/actions/show.php.twig' %}
     {%- endif %}
 
     {%- if 'delete' in actions %}
