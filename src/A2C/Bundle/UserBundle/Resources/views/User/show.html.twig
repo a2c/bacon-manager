@@ -19,7 +19,7 @@
                                     <span class="glyphicon glyphicon-th-list"></span>
                                     {{ 'List'|trans }}
                                 </a>
-                                <a href="{{ path('admin_user_new') }}" class="btn btn-success">
+                                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">
                                     <span class="glyphicon glyphicon-plus"></span>
                                     {{ 'New'|trans }}
                                 </a>
@@ -48,23 +48,19 @@
                             <tbody>
                                 <tr>
                                     <th>{{ 'Id'|trans }}</th>
-                                        <td>{{ entity.id }}</td>
+                                    <td>{{ entity.id }}</td>
                                 </tr>
                                 <tr>
-                                    <th>{{ 'Apikey'|trans }}</th>
-                                        <td>{{ entity.apiKey }}</td>
+                                    <th>{{ 'Username'|trans }}</th>
+                                    <td>{{ entity.username }}</td>
                                 </tr>
                                 <tr>
-                                    <th>{{ 'Createdat'|trans }}</th>
-                                            <td>{% if entity.createdAt %}{{ entity.createdAt|localizeddate('medium','medium',app.request.locale) }}{% endif %}</td>
+                                    <th>{{ 'Email'|trans }}</th>
+                                    <td>{{ entity.email }}</td>
                                 </tr>
                                 <tr>
-                                    <th>{{ 'Updatedat'|trans }}</th>
-                                            <td>{% if entity.updatedAt %}{{ entity.updatedAt|localizeddate('medium','medium',app.request.locale) }}{% endif %}</td>
-                                </tr>
-                                <tr>
-                                    <th>{{ 'Deletedat'|trans }}</th>
-                                            <td>{% if entity.deletedAt %}{{ entity.deletedAt|localizeddate('medium','medium',app.request.locale) }}{% endif %}</td>
+                                    <th>{{ 'Enabled'|trans }}</th>
+                                    <td>{{ entity.enabled ? 'Yes'|trans : 'No'|trans }}</td>
                                 </tr>
                             </tbody>
                         </table>

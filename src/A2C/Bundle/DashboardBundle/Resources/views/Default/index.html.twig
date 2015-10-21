@@ -1,5 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'A2CCoreBundle::layout.html.twig' %}
 
 {% block body %}
-	Teste
+	<section class="content-header">
+		<h1>
+			{{ 'Dashboard'|trans }}
+		</h1>
+		{{ a2c_breadcrumbs_render() }}
+	</section>
+
+	<section class="content">
+		<div class="box box-primary">
+			<div class="box-header">
+				{% include 'A2CCoreBundle:partial:message.html.twig' %}
+			</div>
+			<div class="box-body">
+				<h3>Bem Vindo</h3>
+			</div>
+		</div>
+	</section>
+
 {% endblock %}
