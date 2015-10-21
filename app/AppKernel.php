@@ -33,6 +33,7 @@ class AppKernel extends Kernel
 
             //Aplication
             new AppBundle\AppBundle(),
+            new A2C\Bundle\DashboardBundle\A2CDashboardBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
