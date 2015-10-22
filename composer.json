@@ -29,7 +29,8 @@
         "uecode/api-key-bundle": "dev-master"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "phpmd/phpmd" : "@stable"
     },
     "scripts": {
         "post-root-package-install": [
