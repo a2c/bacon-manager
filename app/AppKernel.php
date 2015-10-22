@@ -19,11 +19,14 @@ class AppKernel extends Kernel
 
             //A2C Core
             new A2C\Bundle\CoreBundle\A2CCoreBundle(),
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
 
             //A2C Security
             new FOS\UserBundle\FOSUserBundle(),
-
             new A2C\Bundle\UserBundle\A2CUserBundle(),
+
+            // Dashboard
+            new A2C\Bundle\DashboardBundle\A2CDashboardBundle(),
 
             //Pagination
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
@@ -33,7 +36,7 @@ class AppKernel extends Kernel
 
             //Aplication
             new AppBundle\AppBundle(),
-            new A2C\Bundle\DashboardBundle\A2CDashboardBundle(),
+            new A2C\Bundle\MenuBundle\A2CMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

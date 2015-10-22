@@ -1,71 +1,67 @@
 {% extends 'A2CCoreBundle::layout.html.twig' %}
 
 {% block body -%}
-        <section class="content-header">
-            <h1>
-                {{ 'User'|trans }}
-                <small>{{ 'Details'|trans }}</small>
-            </h1>
-            {{ a2c_breadcrumbs_render() }}
-        </section>
+    <section class="content-header">
+        <h1>
+            {{ 'User'|trans }}
+            <small>{{ 'Details'|trans }}</small>
+        </h1>
+        {{ a2c_breadcrumbs_render() }}
+    </section>
 
-        <section class="content">
-            <div class="box box-primary">
-                <div class="box-header with-border">
-                    <section class="row">
-                        <div class="col-lg-4">
-                            <div class="btn-group">
-                                <a href="{{ path('admin_user') }}" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-th-list"></span>
-                                    {{ 'List'|trans }}
-                                </a>
-                                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                    {{ 'New'|trans }}
-                                </a>
-                                <a href="{{ path('admin_user_edit',{id: entity.id}) }}" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-pencil"></span>
-                                    {{ 'Edit'|trans }}
-                                </a>
-                                <button type="button" class="btn btn-danger" title="" data-target="#modalDelete" data-toggle="modal">
-                                    <span class="glyphicon glyphicon-remove"></span> {{ 'Remove'|trans }}
-                                </button>
-                                {% embed 'A2CCoreBundle:partial:modalDelete.html.twig' with {
-                                        form: delete_form,
-                                        route: 'admin_user_delete',
-                                        id: entity.id
-                                    } %} 
-                                {% endembed %}
-                            </div>
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <section class="row">
+                    <div class="col-lg-4">
+                        <div class="btn-group">
+                            <a href="{{ path('admin_user') }}" class="btn btn-default">
+                                <span class="glyphicon glyphicon-th-list"></span>
+                                {{ 'List'|trans }}
+                            </a>
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                {{ 'New'|trans }}
+                            </a>
+                            <button type="button" class="btn btn-danger" title="" data-target="#modalDelete" data-toggle="modal">
+                                <span class="glyphicon glyphicon-remove"></span> {{ 'Remove'|trans }}
+                            </button>
+                            {% embed 'A2CCoreBundle:partial:modalDelete.html.twig' with {
+                                    form: delete_form,
+                                    route: 'admin_user_delete',
+                                    id: entity.id
+                                } %}
+                            {% endembed %}
                         </div>
-                    </section>
-                    {% include 'A2CCoreBundle:partial:message.html.twig' %}
-                </div>
-                <div class="box-body">
-                    <div class="table-responsive">
-
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <th>{{ 'Id'|trans }}</th>
-                                    <td>{{ entity.id }}</td>
-                                </tr>
-                                <tr>
-                                    <th>{{ 'Username'|trans }}</th>
-                                    <td>{{ entity.username }}</td>
-                                </tr>
-                                <tr>
-                                    <th>{{ 'Email'|trans }}</th>
-                                    <td>{{ entity.email }}</td>
-                                </tr>
-                                <tr>
-                                    <th>{{ 'Enabled'|trans }}</th>
-                                    <td>{{ entity.enabled ? 'Yes'|trans : 'No'|trans }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
+                </section>
+                {% include 'A2CCoreBundle:partial:message.html.twig' %}
+            </div>
+            <div class="box-body">
+                <div class="table-responsive">
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th>{{ 'Id'|trans }}</th>
+                                <td>{{ entity.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ 'Username'|trans }}</th>
+                                <td>{{ entity.username }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ 'Email'|trans }}</th>
+                                <td>{{ entity.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ 'Enabled'|trans }}</th>
+                                <td>{{ entity.enabled ? 'Yes'|trans : 'No'|trans }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 {% endblock %}
