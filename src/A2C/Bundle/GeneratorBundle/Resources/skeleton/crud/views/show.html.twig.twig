@@ -58,21 +58,21 @@
 
                                         {%- if metadata.type == 'datetime' %}
 
-                                            <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ "|localizeddate('medium','medium',app.request.locale) }}{% endif %}" }}</td>
+                                    <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ "|localizeddate('medium','medium',app.request.locale) }}{% endif %}" }}</td>
 
                                         {%- else %}
 
-                                            <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ "|localizeddate('medium','none',app.request.locale) }}{% endif %}" }}</td>
+                                    <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ "|localizeddate('medium','none',app.request.locale) }}{% endif %}" }}</td>
 
                                         {%- endif %}
 
                                     {%- elseif metadata.type in ['boolean'] %}
 
-                                        <td>{{ "{{ entity." ~ field|replace({'_': ''})  ~ " ? 'Yes'|trans : 'No'|trans " ~" }}" }}</td>
+                                    <td>{{ "{{ entity." ~ field|replace({'_': ''})  ~ " ? 'Yes'|trans : 'No'|trans " ~" }}" }}</td>
 
                                     {%- else %}
 
-                                        <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+                                    <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
 
                                     {%- endif %}
 

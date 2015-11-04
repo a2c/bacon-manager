@@ -20,15 +20,15 @@
                 <section class="row">
                     <div class="col-lg-4">
                         <div class="btn-group">
-                            <a href="#modalSearch" class="btn btn-default" data-toggle="modal">
-                                <span class="glyphicon glyphicon-search"></span>
-                                {{ "{{ 'Search'|trans }}" }}
-                            </a>
                             <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}" class="btn btn-success">
                                 <span class="glyphicon glyphicon-plus"></span>
                                 {{ "{{ 'New'|trans }}" }}
                             </a>
-                            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_export') }}" }}" class="btn btn-success">
+                            <a href="#modalSearch" class="btn btn-default" data-toggle="modal">
+                                <span class="glyphicon glyphicon-search"></span>
+                                {{ "{{ 'Search'|trans }}" }}
+                            </a>
+                            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_export') }}" }}" class="btn btn-default">
                                 <span class="glyphicon glyphicon-download-alt"></span>
                                 {{ "{{ 'Export'|trans }}" }}
                             </a>
@@ -86,7 +86,7 @@
 
                                         <td>
 
-                                                {%- include "crud/views/others/actions.html.twig.twig" %}
+                                                    {%- include "crud/views/others/actions.html.twig.twig" %}
 
                                         </td>
 
