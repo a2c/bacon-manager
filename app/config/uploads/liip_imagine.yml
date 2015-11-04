@@ -1,0 +1,14 @@
+liip_imagine:
+    data_loader: stream.image_filesystem
+    loaders:
+        stream.image_language_filesystem:
+            stream:
+                wrapper: gaufrette://language/
+    filter_sets:
+        language_imagem:
+            data_loader: stream.image_language_filesystem
+            quality:            100
+            filters:
+                thumbnail:
+                    size:       [25, 25]
+                    mode:       outbound

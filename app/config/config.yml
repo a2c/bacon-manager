@@ -1,6 +1,10 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: uploads/knp_gaufrette.yml }
+    - { resource: uploads/oneup_uploader.yml }
+    - { resource: uploads/liip_imagine.yml }
+    - { resource: uploads/jb_file_uploader.yml }
     - { resource: services.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -51,7 +55,7 @@ twig:
         format: d/m/Y
         timezone: "%date.timezone%"
     form:
-        resources: ['bootstrap_3_horizontal_layout.html.twig']
+        resources: ['bootstrap_3_horizontal_layout.html.twig','A2CCoreBundle:Upload:fields.html.twig']
     globals:
         app_locale: "%locale%"
         appname: "%app_name%"

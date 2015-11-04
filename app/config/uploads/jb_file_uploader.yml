@@ -1,0 +1,12 @@
+jb_file_uploader:
+
+    endpoints:
+        language:
+            upload_resolver: language
+            upload_validators: {}
+            crop_validators: {}
+
+    resolvers:
+        language:
+            assets:
+                directory: uploads/language

@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             //A2C Core
             new A2C\Bundle\CoreBundle\A2CCoreBundle(),
             new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new A2C\Bundle\MenuBundle\A2CMenuBundle(),
+            new A2C\Bundle\LanguageBundle\A2CLanguageBundle(),
 
             //A2C Security
             new FOS\UserBundle\FOSUserBundle(),
@@ -34,9 +36,14 @@ class AppKernel extends Kernel
             // ApiKey
             new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
 
+            //Upload Files
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Jb\Bundle\FileUploaderBundle\JbFileUploaderBundle(),
+
             //Aplication
             new AppBundle\AppBundle(),
-            new A2C\Bundle\MenuBundle\A2CMenuBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

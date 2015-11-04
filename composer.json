@@ -28,7 +28,8 @@
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "uecode/api-key-bundle": "dev-master",
         "phpoffice/phpexcel" : "1.8.1",
-        "knplabs/knp-menu-bundle": "~2"
+        "knplabs/knp-menu-bundle": "~2",
+        "jbouzekri/file-uploader-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

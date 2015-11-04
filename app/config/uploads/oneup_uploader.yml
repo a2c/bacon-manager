@@ -1,0 +1,8 @@
+oneup_uploader:
+    mappings:
+        language:
+            frontend: blueimp
+            storage:
+                type: gaufrette
+                filesystem: gaufrette.language_filesystem
+                stream_wrapper: gaufrette://language/

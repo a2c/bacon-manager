@@ -1,3 +1,15 @@
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+oneup_uploader:
+    resource: .
+    type: uploader
+
+a2_c_language:
+    resource: "@A2CLanguageBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 a2_c_dashboard:
     resource: "@A2CDashboardBundle/Controller/"
     type:     annotation
