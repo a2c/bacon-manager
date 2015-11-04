@@ -6,7 +6,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: "en_US"
+    locale: "pt_BR"
     app_name: "A2C Manager"
     app_title_default: "A2C"
     app_short_name: "A2C"
@@ -113,6 +113,15 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+#Menu
+knp_menu:
+    # use "twig: false" to disable the Twig extension and the TwigRenderer
+    twig:
+        template: A2CCoreBundle:partial:menu.html.twig
+    #  if true, enables the helper for PHP templates
+    templating: false
+    # the renderer to use, list is also available by default
+    default_renderer: twig
 # Paginator
 knp_paginator:
     page_range: 5                      # default page range used in pagination control

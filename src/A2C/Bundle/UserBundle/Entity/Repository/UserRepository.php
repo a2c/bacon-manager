@@ -2,53 +2,53 @@
 
 namespace A2C\Bundle\UserBundle\Entity\Repository;
 
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Doctrine\ORM\EntityRepository;
+use A2C\Bundle\UserBundle\Entity\User;
 
-class UserRepository extends EntityRepository implements UserProviderInterface
+class UserRepository extends EntityRepository
 {
-    public function loadUserByUsername($username)
+    public function getQueryPagination(User $entity,$sort,$direction)
     {
-        $user = $this->createQueryBuilder('u')
-            ->where('u.username = :username OR u.email = :email')
-            ->setParameter('username',$username)
-            ->setParameter('email',$username)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $queryBuilder = $this->createQueryBuilder('u');
 
-        if (null === $user) {
+        $data = array(
+            'id'            => $entity->getId(),
+            'username'      => $entity->getUsername(),
+            'email'         => $entity->getEmail(),
+            'enabled'       => $entity->isEnabled(),
+        );
 
-            $message = sprintf(
-                'Unable to find an acitve admin A2CUserBundle:User object identified by "%s"',
-                $user
-            );
-
-            throw new UsernameNotFoundException($message);
+        if (!empty($data['id'])) {
+            $queryBuilder
+                ->andWhere($queryBuilder->expr()->eq('u.id', ':id'))
+                ->setParameter('id', $data['id'])
+            ;
         }
 
-        return $user;
-    }
-
-    public function refreshUser(UserInterface $user)
-    {
-        $class = get_class($user);
-
-        if (!$this->supportsClass($class)) {
-            throw new UnsupportedUserException(
-                sprintf('Instances of "%s" are not supported.',$class)
-            );
+        if (!empty($data['username'])) {
+            $queryBuilder
+                ->andWhere($queryBuilder->expr()->like('u.username', ':username'))
+                ->setParameter('username', "%{$data['username']}%")
+            ;
         }
 
-        return $this->find($user->getId());
-    }
+        if (!empty($data['email'])) {
+            $queryBuilder
+                ->andWhere($queryBuilder->expr()->like('u.email', ':email'))
+                ->setParameter('email', "%{$data['email']}%")
+            ;
+        }
 
-    public function supportsClass($class)
-    {
-        return $this->getEntityName() === $class || is_subclass_of($class,$this->getEntityName());
-    }
+        if (!empty($data['enabled'])) {
+            $queryBuilder
+                ->andWhere($queryBuilder->expr()->eq('u.enabled', ':enabled'))
+                ->setParameter('enabled', $data['enabled'])
+            ;
+        }
 
+
+        $queryBuilder->orderBy('u.' . $sort,$direction);
+
+        return $queryBuilder->getQuery();
+    }
 }

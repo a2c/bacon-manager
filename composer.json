@@ -27,10 +27,12 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "doctrine/doctrine-fixtures-bundle": "^2.2",
         "uecode/api-key-bundle": "dev-master",
-        "phpoffice/phpexcel" : "1.8.1"
+        "phpoffice/phpexcel" : "1.8.1",
+        "knplabs/knp-menu-bundle": "~2"
     },
     "require-dev": {
-        "sensio/generator-bundle": "~2.3"
+        "sensio/generator-bundle": "~2.3",
+        "phpmd/phpmd" : "@stable"
     },
     "scripts": {
         "post-root-package-install": [

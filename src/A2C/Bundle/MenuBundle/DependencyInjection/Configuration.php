@@ -1,6 +1,6 @@
 <?php
 
-namespace A2C\Bundle\CoreBundle\DependencyInjection;
+namespace A2C\Bundle\MenuBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,20 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('a2_c_core');
-
-        $rootNode
-            ->children()
-            ->arrayNode('group')
-            ->canBeUnset()
-            ->children()
-            ->scalarNode('repository')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('default_name')->isRequired()->cannotBeEmpty()->end()
-            ->end()
-            ->end()
-            ->end()
-        ;
-        return $treeBuilder;
+        $rootNode = $treeBuilder->root('a2_c_menu');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
