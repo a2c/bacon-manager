@@ -29,6 +29,7 @@
             'title' => 'Edit',
             'route' => '',
         ));
+
         $entity = $this->getDoctrine()->getRepository('{{ bundle }}:{{ entity }}')->find($id);
 
         if (!$entity) {

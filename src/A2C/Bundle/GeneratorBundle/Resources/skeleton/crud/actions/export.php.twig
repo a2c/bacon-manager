@@ -21,10 +21,10 @@
         if ($this->get('session')->has('{{ entity|lower }}_search_session')) {
             $objSerialize = $this->get('session')->get('{{ entity|lower }}_search_session');
             $entity = unserialize($objSerialize);
-            $query = $this->getDoctrine()->getRepository('AppBundle:{{ entity }}')->getQueryPagination($entity,$sort,$direction);
+            $query = $this->getDoctrine()->getRepository('{{ bundle }}:{{ entity }}')->getQueryPagination($entity,$sort,$direction);
         } else {
             $entity = new {{ entity }}();
-            $query = $this->getDoctrine()->getRepository('AppBundle:{{ entity }}')->getQueryPagination($entity,$sort,$direction);
+            $query = $this->getDoctrine()->getRepository('{{ bundle }}:{{ entity }}')->getQueryPagination($entity,$sort,$direction);
         }
 
         $form = $this->createForm(new {{ entity }}FormType(),$entity,array(
