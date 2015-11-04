@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="pt-BR" target-language="pt" datatype="plaintext" original="file.ext">
+  <file source-language="en" target-language="pt" datatype="plaintext" original="file.ext">
     <body>
       <trans-unit id="8cf04a9734132302f96da8e113e80ce5" resname="Home">
         <source>Home</source>
@@ -54,6 +54,10 @@
             <source>The record has been created successfully</source>
             <target>Registro cadastrado com sucesso</target>
         </trans-unit>
+      <trans-unit id="0095a9fa74d1713e43e370a7d7846224" resname="Export">
+        <source>Export</source>
+        <target>Exportar</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

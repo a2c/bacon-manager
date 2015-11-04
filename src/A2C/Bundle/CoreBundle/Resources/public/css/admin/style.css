@@ -1,6 +1,15 @@
 .message-margin-top { margin-top: 12px; }
+
 .no-record-found {
     text-align: center;
     font-weight: bold;
     background-color: #f4f4f4;
+}
+
+.checkbox label, .radio label {
+    padding-left: 0px;
+    font-weight: bold;
+}
+.actions {
+    width: 126px;
 }
