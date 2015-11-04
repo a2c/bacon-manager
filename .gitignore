@@ -13,3 +13,4 @@ composer.lock
 .idea/
 .vagrant/
 web/vendor
+/nbproject/

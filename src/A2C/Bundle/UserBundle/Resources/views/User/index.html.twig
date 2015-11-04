@@ -36,10 +36,10 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th{% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id', {'title' : 'Order By'|trans ~ ' ' ~ 'Id'}) }}</th>
-                                <th{% if pagination.isSorted('username') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Username', 'username', {'title' : 'Order By'|trans ~ ' ' ~ 'Username'}) }}</th>
-                                <th{% if pagination.isSorted('email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email', 'email', {'title' : 'Order By'|trans ~ ' ' ~ 'Email'}) }}</th>
-                                <th{% if pagination.isSorted('enabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Enabled', 'enabled', {'title' : 'Order By'|trans ~ ' ' ~ 'Enabled'}) }}</th>
+                                <th{% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id'|trans , 'id', {'title' : 'Order By'|trans ~ ' ' ~ 'Id'|trans}) }}</th>
+                                <th{% if pagination.isSorted('username') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Username'|trans, 'username', {'title' : 'Order By'|trans ~ ' ' ~ 'Username'|trans}) }}</th>
+                                <th{% if pagination.isSorted('email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email'|trans, 'email', {'title' : 'Order By'|trans ~ ' ' ~ 'Email'|trans}) }}</th>
+                                <th{% if pagination.isSorted('enabled') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Enabled'|trans , 'enabled', {'title' : 'Order By'|trans ~ ' ' ~ 'Enabled'|trans}) }}</th>
                                 <th>{{ 'Actions'|trans }}</th>
                             </tr>
                         </thead>

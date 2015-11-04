@@ -11,10 +11,19 @@ class Builder extends ContainerAware
     {
         $menu = $factory->createItem('root');
 
-        $menu->addChild('Home',array('route' => 'a2c_dashboard_default_index'));
+        $translate = $this->container->get('translator');
 
-        $menu->addChild('Teste');
-        $menu['Teste']->addChild('Teste 123',array('route' => ''));
+        $menu->addChild($translate->trans('Dashboard'),array(
+            'route' => 'a2c_dashboard_default_index',
+            'childrenAttributes' => array(
+                'icon' => 'fa fa-bar-chart'
+            )
+        ));
+
+        // Users Menu
+        $menu->addChild($translate->trans('Users'));
+        $menu[$translate->trans('Users')]->addChild($translate->trans('List'),array('route' => 'admin_user'));
+        $menu[$translate->trans('Users')]->addChild($translate->trans('New'),array('route' => 'fos_user_registration_register'));
 
         return $menu;
     }

@@ -2,10 +2,8 @@
 
 namespace A2C\Bundle\CoreBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\Request;
 
 abstract class AdminController extends Controller
 {
@@ -19,6 +17,14 @@ abstract class AdminController extends Controller
             $page,
             $perPage
         );
+    }
+
+    /**
+     * @return \A2C\Bundle\CoreBundle\Twig\Extension\BreadcrumbsExtension
+     */
+    protected function getBreadcrumbs()
+    {
+        return $this->get('a2c_breadcrumbs');
     }
 
     /**

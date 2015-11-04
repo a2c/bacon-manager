@@ -17,8 +17,6 @@ class MenuExtension extends Twig_Extension
     private $menuManipulator;
     private $container;
 
-
-
     /**
      * @param Helper $helper
      * @param ContainerInterface $container
@@ -31,6 +29,9 @@ class MenuExtension extends Twig_Extension
         $this->container = $container;
     }
 
+    /**
+     * @return array
+     */
     public function getFunctions()
     {
         return array(
@@ -69,7 +70,7 @@ class MenuExtension extends Twig_Extension
                 }
             }
         }
-
+        
         return $return;
     }
 }

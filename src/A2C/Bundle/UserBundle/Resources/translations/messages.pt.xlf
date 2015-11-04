@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="pt" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="8f9bfe9d1345237cb3b2b205864da075" resname="User">
+        <source>User</source>
+        <target>Usuário</target>
+      </trans-unit>
+      <trans-unit id="dc647eb65e6711e155375218212b3964" resname="Password">
+        <source>Password</source>
+        <target>Senha</target>
+      </trans-unit>
+      <trans-unit id="8cf04a9734132302f96da8e113e80ce5" resname="Home">
+        <source>Home</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="a4d3b161ce1309df1c4e25df28694b7b" resname="Submit">
+        <source>Submit</source>
+        <target>Enviar</target>
+      </trans-unit>
+      <trans-unit id="03c2e7e41ffc181a4e84080b4710e81e" resname="New">
+        <source>New</source>
+        <target>Cadastrar</target>
+      </trans-unit>
+      <trans-unit id="4ee29ca12c7d126654bd0e5275de6135" resname="List">
+        <source>List</source>
+        <target>Listar</target>
+      </trans-unit>
+      <trans-unit id="5b35f1ccd9b38893b97341b1141c7370" resname="Sign in to start your session">
+        <source>Sign in to start your session</source>
+        <target>Login para iniciar a sua sessão</target>
+      </trans-unit>
+      <trans-unit id="13348442cc6a27032d2b4aa28b75a5d3" resname="Search">
+        <source>Search</source>
+        <target>Pesquisar</target>
+      </trans-unit>
+      <trans-unit id="801322095c363689f7620e0147e3fd14" resname="Order By">
+        <source>Order By</source>
+        <target>Ordernar Por</target>
+      </trans-unit>
+      <trans-unit id="06df33001c1d7187fdd81ea1f5b277aa" resname="Actions">
+        <source>Actions</source>
+        <target>Ações</target>
+      </trans-unit>
+      <trans-unit id="498f79c4c5bbde77f1bceb6c86fd0f6d" resname="Show">
+        <source>Show</source>
+        <target>Visualizar</target>
+      </trans-unit>
+      <trans-unit id="1063e38cb53d94d386f21227fcd84717" resname="Remove">
+        <source>Remove</source>
+        <target>Remover</target>
+      </trans-unit>
+      <trans-unit id="087fb8756d4add87f2d162304ccd486b" resname="No records found">
+        <source>No records found</source>
+        <target>Nenhum registro foi encontrado</target>
+      </trans-unit>
+      <trans-unit id="3ec365dd533ddb7ef3d1c111186ce872" resname="Details">
+        <source>Details</source>
+        <target>Detalhes</target>
+      </trans-unit>
+      <trans-unit id="490aa6e856ccf208a054389e47ce0d06" resname="Id">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="f6039d44b29456b20f8f373155ae4973" resname="Username">
+        <source>Username</source>
+        <target>Usuário</target>
+      </trans-unit>
+      <trans-unit id="ce8ae9da5b7cd6c3df2929543a9af92d" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="00d23a76e43b46dae9ec7aa9dcbebb32" resname="Enabled">
+        <source>Enabled</source>
+        <target>Habilitado</target>
+      </trans-unit>
+      <trans-unit id="93cba07454f06a4a960172bbd6e2a435" resname="Yes">
+        <source>Yes</source>
+        <target>Sim</target>
+      </trans-unit>
+      <trans-unit id="bafd7322c6e97d25b6299b5d6fe8920b" resname="No">
+        <source>No</source>
+        <target>Não</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
