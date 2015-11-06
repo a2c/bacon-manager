@@ -3,7 +3,6 @@
 namespace A2C\Bundle\LanguageBundle\Controller\Backend;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -17,7 +16,7 @@ use A2C\Bundle\LanguageBundle\Form\Handler\LanguageFormHandler;
 /**
  * Language controller.
  *
- * @Route("/admin/language")
+ * @Route("/language")
  */
 class LanguageController extends AdminController
 {

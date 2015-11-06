@@ -30,19 +30,19 @@ class Language extends BaseEntity
     private $locale;
 
     /**
-     * @ORM\Column(name="image",type="string",length=150, nullable= false)
+     * @ORM\Column(name="image",type="string",length=150,nullable=true)
      */
     private $image;
 
     /**
-     * @ORM\Column(name="order_by",type="integer")
+     * @ORM\Column(name="order_by",type="integer",nullable=true)
      */
     private $orderBy;
 
     /**
      * @ORM\Column(name="published",type="boolean")
      */
-    private $published;
+    private $published = false;
 
     /**
      * @return mixed

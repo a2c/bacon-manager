@@ -50,6 +50,10 @@
         <source>Updated at</source>
         <target>Atualizado em</target>
       </trans-unit>
+      <trans-unit id="1238427deab693d31b81c2dd7189d73e" resname="Select language">
+        <source>Select language</source>
+        <target>Selecione o idioma</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
