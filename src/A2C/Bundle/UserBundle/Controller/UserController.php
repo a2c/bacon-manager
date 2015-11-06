@@ -15,7 +15,7 @@ use A2C\Bundle\UserBundle\Form\Handler\UserFormHandler;
 /**
  * User controller.
  *
- * @Route("/admin/user")
+ * @Route("/user")
  */
 class UserController extends AdminController
 {

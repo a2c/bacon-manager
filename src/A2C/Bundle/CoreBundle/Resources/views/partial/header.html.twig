@@ -21,6 +21,21 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
+                <li class="dropdown tasks-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-flag-o"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">{{ 'Select language'|trans }}</li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                                {{ a2c_menu_language_render() }}
+                            </ul>
+                        </li>
+                        <li class="footer"></li>
+                    </ul>
+                </li>
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
