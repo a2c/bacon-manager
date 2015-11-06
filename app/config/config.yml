@@ -22,7 +22,7 @@ parameters:
 
 framework:
     #esi:             ~
-    translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%","pt_BR"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -55,6 +55,7 @@ twig:
         format: d/m/Y
         timezone: "%date.timezone%"
     form:
+        resources: ['bootstrap_3_horizontal_layout.html.twig','A2CCoreBundle:Upload:fields.html.twig']
         resources: ['bootstrap_3_horizontal_layout.html.twig','A2CCoreBundle:Upload:fields.html.twig']
     globals:
         app_locale: "%locale%"

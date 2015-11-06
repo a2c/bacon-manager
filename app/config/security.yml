@@ -23,10 +23,10 @@ security:
                 csrf_provider: security.csrf.token_manager
                 login_path: /admin/login
                 check_path: /admin/login_check
-                default_target_path: /admin
+                default_target_path: a2c_dashboard_default_index
             logout:
                 path: /admin/logout
-                target: /
+                target: /admin/login
             anonymous: true
         api:
             pattern: ^/api/*
@@ -36,6 +36,5 @@ security:
 
     access_control:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }

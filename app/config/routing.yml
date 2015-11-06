@@ -8,17 +8,38 @@ oneup_uploader:
 a2_c_language:
     resource: "@A2CLanguageBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /{_locale}/admin
 
 a2_c_dashboard:
     resource: "@A2CDashboardBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /{_locale}/admin
 
+#Config Routers FOSUserBundle
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
     prefix: /admin/
 
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /admin/
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /{_locale}/admin/profile
+
+fos_user_registration:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /{_locale}/admin/register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /{_locale}/admin/resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /{_locale}/admin/profile
+#END Config Routers FOSUserBundle
 
 a2_c_core:
     resource: "@A2CCoreBundle/Controller/"
@@ -27,3 +48,4 @@ a2_c_core:
 a2_c_user:
     resource: "@A2CUserBundle/Controller/"
     type: annotation
+    prefix:   /{_locale}/admin
