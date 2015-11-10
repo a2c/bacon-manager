@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="locale_doctrine_provider" class="A2C\Bundle\TranslationFormBundle\Locale\DoctrineProvider">
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="a2c_translation_form.twig.locale" class="A2C\Bundle\TranslationFormBundle\Twig\Extension\LocaleExtension">
+            <argument type="service" id="service_container" />
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="a2lix_translation_form.default.listener.translations" class="A2C\Bundle\TranslationFormBundle\EventListener\TranslationsListener">
+            <argument type="service" id="a2lix_translation_form.default.service.translation" />
+        </service>
+
+        <!-- Form Types -->
+        <service id="a2lix_translation_form.default.type.translations" class="A2C\Bundle\TranslationFormBundle\Form\Type\TranslationsType">
+            <argument type="service" id="a2lix_translation_form.default.listener.translations" />
+            <argument type="service" id="a2lix_translation_form.default.service.locale_provider" />
+            <tag name="form.type" alias="a2lix_translations" />
+        </service>
+    </services>
+
+</container>
