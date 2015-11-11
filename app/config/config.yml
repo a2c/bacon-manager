@@ -56,8 +56,7 @@ twig:
         format: d/m/Y
         timezone: "%date.timezone%"
     form:
-        resources: ['bootstrap_3_horizontal_layout.html.twig','A2CCoreBundle:Upload:fields.html.twig']
-        resources: ['bootstrap_3_horizontal_layout.html.twig','A2CCoreBundle:Upload:fields.html.twig']
+        resources: ['A2CCoreBundle:Form:bootstrap_3_horizontal_custom_layout.html.twig','A2CCoreBundle:Upload:fields.html.twig']    
     globals:
         app_locale: "%locale%"
         appname: "%app_name%"
