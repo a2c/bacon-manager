@@ -18,6 +18,7 @@ parameters:
     footer_description : "A2C"
     footer_link: "http://www.a2c.ag"
     date.timezone: "America/Sao_Paulo"
+    name_field_translation: "translations"
 
 
 framework:
@@ -65,6 +66,7 @@ twig:
         app_logo_manager: "%app_logo_manager%"
         footer_description: "%footer_description%"
         footer_link: "%footer_link%"
+        field_translation : "%name_field_translation%"
 
 # Assetic Configuration
 assetic:

@@ -1,0 +1,26 @@
+{% use 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block form_row -%}
+    {% spaceless %}
+        <div class="form-group{% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+
+            {% if form.vars.name != field_translation %}
+                {{ form_label(form) }}
+            {% endif %}
+
+            <div class="{{ block('form_group_class') }}">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{%- endblock form_row %}
+
+
+{% block form_group_class -%}
+    {%- if form.vars.name != field_translation -%}
+        col-sm-10
+    {%- else -%}
+        col-sm-12
+    {%- endif -%}
+{%- endblock form_group_class %}
