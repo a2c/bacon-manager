@@ -72,14 +72,8 @@ class LanguageExtension extends Twig_Extension
 
     private function getAcronByLocale($locale)
     {
-        switch ($locale) {
-            case 'pt_BR' :
-                return 'br';
-                break;
-            case 'en_US' :
-                return 'us';
-                break;
-        }
+        $country = explode('_', $locale);
+        return strtolower($country[1]);
     }
 
 }

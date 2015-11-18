@@ -14,7 +14,7 @@ class Builder extends ContainerAware
         $translate = $this->container->get('translator');
 
         // Language Menu
-        $menu->addChild($translate->trans('Language'));
+        $menu->addChild($translate->trans('Language'))->setAttribute('icon', '<i class="fa ion-earth"></i>');
         $menu[$translate->trans('Language')]->addChild($translate->trans('List'),array('route' => 'admin_language'));
         $menu[$translate->trans('Language')]->addChild($translate->trans('New'),array('route' => 'admin_language_new'));
 

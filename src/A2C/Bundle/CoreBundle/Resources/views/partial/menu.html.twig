@@ -59,7 +59,7 @@
     {% spaceless %}
         <a href="#">
             {% set translation_domain = item.extra('label_catalogue') %}
-            {% set icon = item.extra('icon')|default('') %}
+            {% set icon = item.attribute('icon')|default(item.level > 1 ? '<i class="fa fa-angle-double-right"></i>' : '') %}
             {{ icon|raw }}
             {{ parent() }}
             <i class="fa pull-right fa-angle-left"></i>
