@@ -11,6 +11,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     config.vm.hostname = "scotchbox"
 
-    config.vm.synced_folder ".", "/var/www",type: "nfs"
-    #config.vm.synced_folder ".", "/var/www",type: "rsyncx"
+    #config.vm.synced_folder ".", "/var/www",type: "nfs"
+    config.vm.synced_folder ".", "/var/www",type: "rsync", rsync__exclude: ".git/"
 end
