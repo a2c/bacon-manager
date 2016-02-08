@@ -1,6 +1,0 @@
-<ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> {{ 'Home'|trans }}</a></li>
-    {% for item in itens %}
-        <li><a href="{{ item.route is not empty ? url(item.route) : '#'  }}" {{ loop.last ? 'class="active"' : '' }}>{{ item.title|trans }}</a></li>
-    {% endfor %}
-</ol>

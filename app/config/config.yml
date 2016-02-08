@@ -1,21 +1,17 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: uploads/knp_gaufrette.yml }
-    - { resource: uploads/oneup_uploader.yml }
-    - { resource: uploads/liip_imagine.yml }
-    - { resource: uploads/jb_file_uploader.yml }
     - { resource: services.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: "pt_BR"
-    app_name: "A2C Manager"
-    app_title_default: "A2C"
-    app_short_name: "A2C"
+    app_name: "Bacon Manager"
+    app_title_default: "Bacon"
+    app_short_name: "Bacon"
     app_logo_manager: "http://www.a2c.ag/images/site/2014/logo-a2c.png"
-    footer_description : "A2C"
+    footer_description : "Bacon"
     footer_link: "http://www.a2c.ag"
     date.timezone: "America/Sao_Paulo"
     name_field_translation: "translations"
@@ -56,7 +52,7 @@ twig:
         format: d/m/Y
         timezone: "%date.timezone%"
     form:
-        resources: ['A2CCoreBundle:Form:bootstrap_3_horizontal_custom_layout.html.twig','A2CCoreBundle:Upload:fields.html.twig']    
+        resources: ['BaconCoreBundle:Form:bootstrap_3_horizontal_custom_layout.html.twig','BaconCoreBundle:Upload:fields.html.twig']
     globals:
         app_locale: "%locale%"
         appname: "%app_name%"
@@ -109,7 +105,7 @@ doctrine:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: admin
-    user_class: A2C\Bundle\UserBundle\Entity\User
+    user_class: Bacon\Bundle\UserBundle\Entity\User
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -123,7 +119,7 @@ swiftmailer:
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
     twig:
-        template: A2CCoreBundle:partial:menu.html.twig
+        template: BaconCoreBundle:partial:menu.html.twig
     #  if true, enables the helper for PHP templates
     templating: false
     # the renderer to use, list is also available by default

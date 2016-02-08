@@ -17,30 +17,23 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            //A2C Core
-            new A2C\Bundle\CoreBundle\A2CCoreBundle(),
-            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new A2C\Bundle\MenuBundle\A2CMenuBundle(),
-            new A2C\Bundle\LanguageBundle\A2CLanguageBundle(),
-
-            //A2C Security
-            new FOS\UserBundle\FOSUserBundle(),
-            new A2C\Bundle\UserBundle\A2CUserBundle(),
-
-            // Dashboard
-            new A2C\Bundle\DashboardBundle\A2CDashboardBundle(),
-
-            //Pagination
+            //Core Bundle
+            new Bacon\Bundle\CoreBundle\BaconCoreBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Bacon\Bundle\LanguageBundle\BaconLanguageBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new Bacon\Bundle\MenuBundle\BaconMenuBundle(),
+
+
+            //Security
+            new FOS\UserBundle\FOSUserBundle(),
+            new Bacon\Bundle\UserBundle\BaconUserBundle(),
 
             // ApiKey
             new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
 
-            //Upload Files
-            new Oneup\UploaderBundle\OneupUploaderBundle(),
-            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-            new Liip\ImagineBundle\LiipImagineBundle(),
-            new Jb\Bundle\FileUploaderBundle\JbFileUploaderBundle(),
+            // Fixtures
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
             //Aplication
             new AppBundle\AppBundle(),
@@ -51,8 +44,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
-            $bundles[] = new A2C\Bundle\GeneratorBundle\A2CGeneratorBundle();
-            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            $bundles[] = new Bacon\Bundle\GeneratorBundle\BaconGeneratorBundle();
         }
 
         return $bundles;
