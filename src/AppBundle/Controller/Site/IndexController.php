@@ -12,13 +12,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 */
 class IndexController extends Controller
 {
-	/**
-	 * @Route("/",name="index_site")
-	 * @Method("GET")
-     * @Template()
-	 */
-	public function indexAction()
-	{
+    /**
+ * @Route("/",name="index_site")
+ * @Method("GET")
+ * @Template()
+ * 
+ * @return int 
+ */
+    public function indexAction()
+    {
         return [];
-	}
+    }
 }
