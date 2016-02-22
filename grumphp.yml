@@ -1,0 +1,11 @@
+parameters:
+    git_dir: .
+    bin_dir: bin
+    tasks: 
+        phpcs: 
+            standard: "vendor/leaphub/phpcs-symfony2-standard/leaphub/phpcs/Symfony2/"
+        git_blacklist:
+            keywords:
+                - "die("
+                - "var_dump("
+                - "exit;"

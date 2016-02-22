@@ -27,7 +27,9 @@
         "baconmanager/menu-bundle" : "0.1",
         "baconmanager/core-bundle" : "dev-master",
         "baconmanager/language-bundle": "dev-master",
-        "baconmanager/user-bundle": "dev-master"
+        "baconmanager/user-bundle": "dev-master",
+        "phpro/grumphp": "*",
+        "leaphub/phpcs-symfony2-standard": "*"
     },
     "require-dev" : {
         "sensio/generator-bundle": "~2.3",
