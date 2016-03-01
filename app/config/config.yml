@@ -10,7 +10,7 @@ parameters:
     app_name: "Bacon Manager"
     app_title_default: "Bacon"
     app_short_name: "Bacon"
-    app_logo_manager: "http://www.a2c.ag/images/site/2014/logo-a2c.png"
+    app_logo_manager: "http://a2c.ag/images/site/2014/logo-a2c.png"
     footer_description : "Bacon"
     footer_link: "http://www.a2c.ag"
     date.timezone: "America/Sao_Paulo"

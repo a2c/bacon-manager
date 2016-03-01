@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="A2C Coding Standard">
+
+    <description>A2C Coding Standard</description>
+    <exclude-pattern>app/check.php</exclude-pattern>
+
+    <!-- Symfony follows the standards defined in the PSR-0, PSR-1 and PSR-2 documents. -->
+    <rule ref="../vendor/escapestudios/symfony2-coding-standard/Symfony2/ruleset.xml" />
+
+</ruleset>

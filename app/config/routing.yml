@@ -5,8 +5,13 @@ fos_user:
 bacon_language:
     resource: "@BaconLanguageBundle/Controller/"
     type:     annotation
-    prefix:   /{_locale}/admin
+    prefix:   /admin
 
 app_site:
     resource: "@AppBundle/Controller/Site"
     type:     annotation
+
+app_backend:
+    resource: "@AppBundle/Controller/Backend"
+    type:     annotation
+    prefix:   "/admin"

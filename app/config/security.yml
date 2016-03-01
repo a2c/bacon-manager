@@ -23,7 +23,7 @@ security:
                 csrf_provider: security.csrf.token_manager
                 login_path: /admin/login
                 check_path: /admin/login_check
-                default_target_path: a2c_dashboard_default_index
+                default_target_path: admin_default_route
             logout:
                 path: /admin/logout
                 target: /admin/login

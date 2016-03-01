@@ -4,20 +4,15 @@ web:
         - "80:80"
     volumes:
         - .:/var/www/html
-        - ./deploy/000-default.conf:/etc/apache2/sites-enabled/001-clipp.conf
+        - ./deploy/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
     links:
         - mysql
-        - memcached
 mysql:
     image: mysql
     ports:
         - "3306:3306"
     environment:
         - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=reservae_dev
-        - MYSQL_USER=reservae_dev
+        - MYSQL_DATABASE=bacon_manager
+        - MYSQL_USER=bacon_manager
         - MYSQL_PASSWORD=123
-memcached:
-    image: memcached
-    ports:
-        - "11211:11211"

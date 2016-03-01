@@ -9,6 +9,7 @@ use Symfony\Component\Debug\Debug;
 
 // This check prevents access to debug front controllers that are deployed by accident to production servers.
 // Feel free to remove this, extend it, or make something more sophisticated.
+/*
 if ((getenv('APP_ENV') != 'dev')) {
     if (isset($_SERVER['HTTP_CLIENT_IP'])
         || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
@@ -18,6 +19,7 @@ if ((getenv('APP_ENV') != 'dev')) {
         exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
     }
 }
+*/
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 Debug::enable();

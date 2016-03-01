@@ -25,18 +25,17 @@
         "uecode/api-key-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "baconmanager/menu-bundle" : "0.1",
-        "baconmanager/core-bundle" : "dev-master",
+        "baconmanager/core-bundle" : "1.0",
         "baconmanager/language-bundle": "dev-master",
-        "baconmanager/user-bundle": "dev-master",
-        "phpro/grumphp": "*",
-        "leaphub/phpcs-symfony2-standard": "*"
+        "baconmanager/user-bundle": "dev-master"
     },
     "require-dev" : {
         "sensio/generator-bundle": "~2.3",
         "baconmanager/generator-bundle": "dev-master",
         "phpunit/phpunit" : "4.6.*",
-        "liip/functional-test-bundle":"dev-master",
-        "phpunit/php-code-coverage": "2.0.11"
+        "phpunit/php-code-coverage": "2.0.11",
+        "phpro/grumphp": "*",
+        "escapestudios/symfony2-coding-standard" : "~2.0"
     },
     "scripts": {
         "post-root-package-install": [

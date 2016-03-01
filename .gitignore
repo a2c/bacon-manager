@@ -16,3 +16,4 @@ web/vendor
 /nbproject/
 web/media/
 web/uploads/
+docker-compose.yml

@@ -3,7 +3,7 @@ parameters:
     bin_dir: bin
     tasks: 
         phpcs: 
-            standard: "vendor/leaphub/phpcs-symfony2-standard/leaphub/phpcs/Symfony2/"
+            standard: "deploy/rules.xml"
         git_blacklist:
             keywords:
                 - "die("
