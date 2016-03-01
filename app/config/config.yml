@@ -14,7 +14,7 @@ parameters:
     footer_description : "Bacon"
     footer_link: "http://www.a2c.ag"
     date.timezone: "America/Sao_Paulo"
-    name_field_translation: "translations"
+    skin_template: "sidebar-mini skin-blue"
 
 
 framework:
@@ -51,8 +51,9 @@ twig:
     date:
         format: d/m/Y
         timezone: "%date.timezone%"
-    form:
-        resources: ['BaconCoreBundle:Form:bootstrap_3_horizontal_custom_layout.html.twig','BaconCoreBundle:Upload:fields.html.twig']
+    form_themes:
+        - BaconCoreBundle:Form:bootstrap_3_horizontal_custom_layout.html.twig
+        - BaconCoreBundle:Upload:fields.html.twig
     globals:
         app_locale: "%locale%"
         appname: "%app_name%"
@@ -61,20 +62,8 @@ twig:
         app_logo_manager: "%app_logo_manager%"
         footer_description: "%footer_description%"
         footer_link: "%footer_link%"
-        field_translation : "%name_field_translation%"
-
-# Assetic Configuration
-assetic:
-    debug:          "%kernel.debug%"
-    use_controller: true
-    bundles:        [  ]
-    #java: /usr/bin/java
-    filters:
-        cssrewrite: ~
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+        app_logo_manager: "%app_logo_manager%"
+        skin_template: "%skin_template%"
 
 # Doctrine Configuration
 doctrine:
