@@ -41,3 +41,4 @@
 /composer.lock
 /var/SymfonyRequirements.php
 /web/vendor
+/web/app_dev.php
