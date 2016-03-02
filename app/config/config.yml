@@ -15,6 +15,7 @@ parameters:
     footer_link: "http://www.a2c.ag"
     date.timezone: "America/Sao_Paulo"
     skin_template: "sidebar-mini skin-blue"
+    route_admin: "admin_default_route"
 
 
 framework:
@@ -64,6 +65,7 @@ twig:
         footer_link: "%footer_link%"
         app_logo_manager: "%app_logo_manager%"
         skin_template: "%skin_template%"
+        route_admin: "%route_admin%"
 
 # Doctrine Configuration
 doctrine:
