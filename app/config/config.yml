@@ -53,7 +53,7 @@ twig:
         timezone: "%date.timezone%"
     form_themes:
         - BaconCoreBundle:Form:bootstrap_3_horizontal_custom_layout.html.twig
-        - BaconCoreBundle:Upload:fields.html.twig
+
     globals:
         app_locale: "%locale%"
         appname: "%app_name%"
