@@ -3,91 +3,97 @@
 
 ![A2C logo](http://www.a2c.com.br/assinatura_2014/images/logo_assinatura.jpg)
 
-Este Readme é um passo a passo de como instalar o A2C Manager na sua maquina
+This Readme is a step-by-step tutorial on how to use the A2C Manager on your project
 
-## Vagrant
+## In case you use Linux
 
-Acessar VM via SSH
-	
-	vagrant ssh	
+    Stop Apache/Httpd and Mysql services or change the used ports on docker-compose.yml. 
+    Ex: ports:  81:80
 
-Configuração padrão do parameters.yml
-	
-	parameters:
+## Docker
+
+    Creating and initializing Docker containers
+    docker-compose up -d
+
+#### See created containers
+
+    docker ps
+    
+    CONTAINER ID        IMAGE
+    56a46e2f2ecf        baconmanager_web    ...     
+    036483db7918        mysql               ...
+
+#### Acessing Web Container
+
+    docker exec -ti 56a46e2f2ecf /bin/bash
+
+#### Installing dependencies
+
+    composer install
+    bower install
+    gulp build
+
+#### Default configuration of parameters.yml
+    
+    parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: a2c_manager
-    database_user: root
-    database_password: root
+    database_name: bacon_manager
+    database_user: bacon_manager
+    database_password: 123
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
 
-Criando o database
-	
-	php app/console doctrine:database:create
 
-Criando as tabelas no banco de dados
-	
-	php app/console doctrine:schema:update --force
+#### Creating database tables
+    
+    php app/console doctrine:schema:update --force
 
-Executando fixtures para inserir dados no banco
+#### Putting default data
 
-	php app/console doctrine:fixtures:load
+    php app/console doctrine:fixtures:load
 
-Usando RSYNC no windows
-	
-	Baixar e instalar: http://sourceforge.net/projects/rsyncforwindows/?source=typ_redirect
+#### In case connection gets refused ( Linux )
 
-	Copiar caminho da pasta bin e inserir em variáveis de ambiente. 
-	Ex: C:\Program Files (x86)\RsyncForWindows\bin
+    docker inspect 036483db7918 | grep IPAddress
+
+    Get IP. Ex: "172.17.0.2"
+
+    And change it on parameters.yml. 
+
+    Ex: parameters:
+        database_host: 172.17.0.2
 
 ## Virtual Host Apache
-    sudo nano /etc/apache2/sites-available/a2c_manager.conf
+#### With the build command a virtual host is created in 
+    
+    /etc/apache2/sites-available/000-default.conf
 
-Adicionar as linhas abaixo no arquivo criado
+#### Virtual Host is accessible to changes like ServerName and/or DocumentRoot
 
-	<VirtualHost *:80>
-	    ServerName a2c_manager.dev
-	
-	    SetEnv APP_ENV 'dev'
-	
-	    DocumentRoot /var/www/web
-	    <Directory /var/www/web>
-	        AllowOverride All
-	        Order Allow,Deny
-	        Allow from All
-	
-	        <IfModule mod_rewrite.c>
-	            Options -MultiViews
-	            RewriteEngine On
-	            RewriteCond %{REQUEST_FILENAME} !-f
-	            RewriteRule ^(.*)$ app.php [QSA,L]
-	        </IfModule>
-	    </Directory>
-	
-	    # uncomment the following lines if you install assets as symlinks
-	    # or run into problems when compiling LESS/Sass/CoffeScript assets
-	    # <Directory /var/www>
-	    #     Options FollowSymlinks
-	    # </Directory>
-	
-	    ErrorLog /var/log/apache2/a2c_manager_error.log
-	    CustomLog /var/log/apache2/a2c_manager_access.log combined
-	</VirtualHost>
-	
-Depois de criar o arquivo é necessario habilitar o ele para isso devemos executar o seguinte comando no terminal
+    <VirtualHost *:80>
+        ServerName bacon_manager.dev
+        DocumentRoot /var/www/html/web
+        <Directory /var/www/html/web>
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+        </Directory>
+    </VirtualHost>
+    
+##### After its creation, we have to enable it with the command that follows
 
-    sudo a2ensite a2c_manager.conf
+    sudo a2ensite 000-default.conf
     sudo service apache2 restart
 
-## Adicionando o projeto no hosts
-Adicionar a seguinte linha no **hosts**
+## Adding the Project on Hosts
+#### Add this line on **hosts**
 
-	192.168.50.123 a2c_manager.dev 
+    127.0.0.1 a2c_manager.dev 
    
-## Padrões de desenvolvimento
+## Development Practices
  - Gulp
- - Boas praticas
+ - Good pratices
