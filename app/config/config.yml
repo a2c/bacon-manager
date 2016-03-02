@@ -15,6 +15,7 @@ parameters:
     footer_link: "http://www.a2c.ag"
     date.timezone: "America/Sao_Paulo"
     skin_template: "sidebar-mini skin-blue"
+    route_admin: "admin_default_route"
 
 
 framework:
@@ -53,7 +54,7 @@ twig:
         timezone: "%date.timezone%"
     form_themes:
         - BaconCoreBundle:Form:bootstrap_3_horizontal_custom_layout.html.twig
-        - BaconCoreBundle:Upload:fields.html.twig
+
     globals:
         app_locale: "%locale%"
         appname: "%app_name%"
@@ -64,6 +65,7 @@ twig:
         footer_link: "%footer_link%"
         app_logo_manager: "%app_logo_manager%"
         skin_template: "%skin_template%"
+        route_admin: "%route_admin%"
 
 # Doctrine Configuration
 doctrine:
