@@ -1,7 +1,5 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/0872e1d256f14bc2ba231ab9a91d5726)](https://www.codacy.com)
-# A2C Manager
-
-![A2C logo](http://www.a2c.com.br/assinatura_2014/images/logo_assinatura.jpg)
+# Bacon Manager
 
 This Readme is a step-by-step tutorial on how to use the A2C Manager on your project
 
@@ -97,3 +95,7 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 ## Development Practices
  - Gulp
  - Good pratices
+
+ ## Sponsored By
+
+![A2C logo](http://www.a2c.com.br/assinatura_2014/images/logo_assinatura.jpg)
