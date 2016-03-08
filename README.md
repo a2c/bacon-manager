@@ -96,6 +96,6 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
  - Gulp
  - Good pratices
 
- ## Sponsored By
+## Sponsored By
 
 ![A2C logo](http://www.a2c.com.br/assinatura_2014/images/logo_assinatura.jpg)
