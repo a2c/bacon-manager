@@ -28,7 +28,8 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 #### Installing dependencies
 
     composer install
-    bower install
+    npm install
+    bower install --allow-root
     gulp build
 
 #### Default configuration of parameters.yml
@@ -48,11 +49,7 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 
 #### Creating database tables
     
-    php app/console doctrine:schema:update --force
-
-#### Putting default data
-
-    php app/console doctrine:fixtures:load
+    php bin/console doctrine:schema:update --force
 
 #### In case connection gets refused ( Linux )
 
@@ -64,6 +61,11 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 
     Ex: parameters:
         database_host: 172.17.0.2
+
+#### Putting default data
+
+    php bin/console doctrine:fixtures:load
+
 
 ## Virtual Host Apache
 #### With the build command a virtual host is created in 
