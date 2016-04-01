@@ -66,34 +66,6 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 
     php bin/console doctrine:fixtures:load
 
-
-## Virtual Host Apache
-#### With the build command a virtual host is created in 
-    
-    /etc/apache2/sites-available/000-default.conf
-
-#### Virtual Host is accessible to changes like ServerName and/or DocumentRoot
-
-    <VirtualHost *:80>
-        ServerName bacon_manager.dev
-        DocumentRoot /var/www/html/web
-        <Directory /var/www/html/web>
-            Options Indexes FollowSymLinks
-            AllowOverride All
-            Require all granted
-        </Directory>
-    </VirtualHost>
-    
-##### After its creation, we have to enable it with the command that follows
-
-    sudo a2ensite 000-default.conf
-    sudo service apache2 restart
-
-## Adding the Project on Hosts
-#### Add this line on **hosts**
-
-    127.0.0.1 a2c_manager.dev 
-   
 ## Development Practices
  - Gulp
  - Good pratices
