@@ -1,4 +1,5 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/0872e1d256f14bc2ba231ab9a91d5726)](https://www.codacy.com)
+
 # Bacon Manager
 
 This Readme is a step-by-step tutorial on how to use the A2C Manager on your project
@@ -10,31 +11,55 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 
 ## Docker
 
-    Creating and initializing Docker containers
-    docker-compose up -d
+### Creating and initializing Docker containers
 
-#### See created containers
+```bash
+$ docker-compose up -d
+```
+### See created containers
 
-    docker ps
-    
-    CONTAINER ID        IMAGE
-    56a46e2f2ecf        baconmanager_web    ...     
-    036483db7918        mysql               ...
+```bash
+$ docker ps
 
-#### Acessing Web Container
+CONTAINER ID        IMAGE
+56a46e2f2ecf        baconmanager_web    ...     
+036483db7918        mysql               ...
+```
 
-    docker exec -ti 56a46e2f2ecf /bin/bash
+### Acessing Web Container
+```bash
+$ docker exec -ti 56a46e2f2ecf /bin/bash
+```
 
-#### Installing dependencies
+## Installing dependencies
 
-    composer install
-    npm install
-    bower install --allow-root
-    gulp build
+**PHP**
 
-#### Default configuration of parameters.yml
-    
-    parameters:
+```bash
+$ composer install
+```
+**NPM**
+
+```bash
+$ npm install
+```
+**BOWER**
+
+```bash
+$ bower install --allow-root
+```
+
+## Gulp
+
+Build Assets
+
+```bash
+$ gulp build
+```
+
+## Default configuration of parameters.yml
+```yaml
+parameters:
     database_host: 127.0.0.1
     database_port: null
     database_name: bacon_manager
@@ -45,16 +70,21 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
-
+```
+    
 
 #### Creating database tables
-    
-    php bin/console doctrine:schema:update --force
+
+```bash
+$ php bin/console doctrine:schema:update --force
+```   
 
 #### In case connection gets refused ( Linux )
 
-    docker inspect 036483db7918 | grep IPAddress
-
+```bash
+$ docker inspect 036483db7918 | grep IPAddress
+``` 
+   
     Get IP. Ex: "172.17.0.2"
 
     And change it on parameters.yml. 
@@ -63,8 +93,10 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
         database_host: 172.17.0.2
 
 #### Putting default data
-
-    php bin/console doctrine:fixtures:load
+```bash
+$ php bin/console doctrine:fixtures:load
+```
+    
 
 ## Additional links
 
