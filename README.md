@@ -97,7 +97,6 @@ $ docker inspect 036483db7918 | grep IPAddress
 $ php bin/console doctrine:fixtures:load
 ```
     
-
 ## Additional links
 
 - [Main Features](https://github.com/a2c/bacon-manager/wiki/Features)
