@@ -66,6 +66,11 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 
     php bin/console doctrine:fixtures:load
 
+## Additional links
+
+- [Main Features](https://github.com/a2c/bacon-manager/wiki/Features)
+- [Rest generator configuration](https://github.com/a2c/bacon-manager/wiki/Rest)
+
 ## Development Practices
  - Gulp
  - Good pratices
