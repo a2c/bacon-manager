@@ -14,6 +14,10 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 ### Creating and initializing Docker containers
 
 ```bash
+$ cp docker-compose.yml.dist docker-compose.yml
+```
+
+```bash
 $ docker-compose up -d
 ```
 ### See created containers
