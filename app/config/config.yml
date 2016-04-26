@@ -12,7 +12,7 @@ parameters:
     app_short_name: "Bacon"
     app_logo_manager: "http://a2c.ag/images/site/2014/logo-a2c.png"
     footer_description : "Bacon"
-    footer_link: "http://www.a2c.ag"
+    footer_link: "http://www.a2c.com.br"
     date.timezone: "America/Sao_Paulo"
     skin_template: "sidebar-mini skin-blue"
     route_admin: "admin_default_route"
