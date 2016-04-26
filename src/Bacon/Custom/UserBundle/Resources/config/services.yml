@@ -1,0 +1,4 @@
+services:
+#    bacon_custom_user.example:
+#        class: Bacon\Custom\UserBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
