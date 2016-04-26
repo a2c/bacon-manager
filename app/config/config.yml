@@ -67,6 +67,9 @@ twig:
         skin_template: "%skin_template%"
         route_admin: "%route_admin%"
 
+bacon_custom_user:
+    user_class: BaconCustomUserBundle\Entity\User
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -96,7 +99,7 @@ doctrine:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: admin
-    user_class: Bacon\Bundle\UserBundle\Entity\User
+    user_class: BaconCustomUserBundle\Entity\User
 
 # Swiftmailer Configuration
 swiftmailer:

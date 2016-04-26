@@ -35,6 +35,7 @@ class AppKernel extends Kernel
 
             //Aplication
             new AppBundle\AppBundle(),
+            new BaconCustomUserBundle\BaconCustomUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,12 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="register-box-body">
+    <p class="login-box-msg">{{ 'Forgot my password'|trans }}</p>
+    {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+        {{ form_widget(form) }}
+        <div class="row">
+            <div class="col-xs-5">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">{{ 'resetting.reset.submit'|trans }}</button>
+            </div>
+        </div>
+    {{ form_end(form) }}
+</div>

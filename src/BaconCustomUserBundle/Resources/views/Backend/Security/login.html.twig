@@ -1,0 +1,62 @@
+{% extends 'BaconUserBundle::layout.html.twig' %}
+{% block body %}
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">{{ 'Sign in to start your session'|trans }}</p>
+        {% trans_default_domain 'FOSUserBundle' %}
+
+        {% if app.session.flashbag.has('message') %}
+            <div class="row message-margin-top">
+                <div class="col-lg-12">
+                    {% for flashMessage in app.session.flashbag.get('message') %}
+                        <div class="alert alert-{% if flashMessage.type == 'error' %}danger{% else %}{{ flashMessage.type }}{% endif %} fade in alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h4><i class="icon fa fa-{% if flashMessage.type == 'error' %}ban{% else %}check{% endif %}"></i> {% if flashMessage.type == 'error' %}{{ 'Error' | trans }}{% else %}{{ 'Success'|trans }}{% endif %}!</h4>
+                            {{ flashMessage.message | trans }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% block fos_user_content %}
+            {% if error %}
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+        {% endblock %}
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+            <div class="form-group has-feedback">
+                <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans }}" required="required" class="form-control"/>
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="{{ 'security.login.password'|trans }}"/>
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label>
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> {{ 'Remember Me'|trans }}
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">{{ 'Sign In'|trans }}</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
+
+        <!-- /.social-auth-links -->
+
+        <a href="{{ path('fos_user_resetting_request') }}">{{ 'forgot my password'|trans }}</a><br>
+
+    </div>
+    <!-- /.login-box-body -->
+{% endblock %}
