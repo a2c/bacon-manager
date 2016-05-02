@@ -7,7 +7,7 @@ This Readme is a step-by-step tutorial on how to use the A2C Manager on your pro
 ## In case you use Linux
 
     Stop Apache/Httpd and Mysql services or change the used ports on docker-compose.yml. 
-    Ex: ports:  81:80
+    Ex: ports:  80:81
 
 ## Docker
 
