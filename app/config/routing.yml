@@ -7,11 +7,6 @@ bacon_language:
     type:     annotation
     prefix:   /admin
 
-bacon_user:
-    resource: "@BaconUserBundle/Controller/"
-    type:     annotation
-    prefix:   /admin
-
 app_site:
     resource: "@AppBundle/Controller/Site"
     type:     annotation
