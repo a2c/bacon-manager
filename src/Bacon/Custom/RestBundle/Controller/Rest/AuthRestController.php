@@ -1,6 +1,6 @@
 <?php
 
-namespace Bacon\Custom\UserBundle\Controller\Rest;
+namespace Bacon\Custom\RestBundle\Controller\Rest;
 
 use Bacon\Bundle\CoreBundle\Controller\BaseController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;

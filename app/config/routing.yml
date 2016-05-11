@@ -15,3 +15,8 @@ app_backend:
     resource: "@AppBundle/Controller/Backend"
     type:     annotation
     prefix:   /admin
+
+bacon_user:
+    resource: "@BaconUserBundle/Controller/"
+    type:     annotation
+    prefix:   /admin
