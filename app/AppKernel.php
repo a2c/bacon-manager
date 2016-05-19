@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             //Security
             new FOS\UserBundle\FOSUserBundle(),
             new Bacon\Bundle\UserBundle\BaconUserBundle(),
+            new Bacon\Bundle\AclBundle\BaconAclBundle(),
 
             // ApiKey
             new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
@@ -36,6 +37,7 @@ class AppKernel extends Kernel
             //Aplication
             new AppBundle\AppBundle(),
             new Bacon\Custom\UserBundle\BaconCustomUserBundle(),
+            new Bacon\Custom\AclBundle\BaconCustomAclBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

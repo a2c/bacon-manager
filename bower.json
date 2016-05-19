@@ -12,7 +12,8 @@
     "tests"
   ],
   "dependencies": {
-    "admin-lte" : "2.3.0",
-    "flag-icon-css" : "0.8.1"
+    "admin-lte" : "2.3.3",
+    "flag-icon-css" : "0.8.1",
+    "jquery-validation": "1.15.0"
   }
 }

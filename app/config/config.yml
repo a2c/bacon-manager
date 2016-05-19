@@ -76,6 +76,7 @@ doctrine:
         dbname:   "%database_name%"
         user:     "%database_user%"
         password: "%database_password%"
+        server_version: '5.5'
         charset:  UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
@@ -97,6 +98,8 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: admin
     user_class: Bacon\Custom\UserBundle\Entity\User
+    group:
+        group_class: Bacon\Custom\UserBundle\Entity\Group
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -126,3 +129,13 @@ knp_paginator:
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig    # sliding pagination controls template
         sortable:   KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+bacon_acl:
+    user_class: Bacon\Custom\UserBundle\Entity\User
+    group_class: Bacon\Custom\UserBundle\Entity\Group
+    route_redirect_after_save: fos_user_group_list
+    configuration:
+        entities:
+            module_class: Bacon\Bundle\AclBundle\Entity\Module
+            module_actions: Bacon\Custom\AclBundle\Entity\ModuleActions
+            module_actions_group: Bacon\Custom\AclBundle\Entity\ModuleActionsGroup
