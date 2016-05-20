@@ -16,6 +16,7 @@ parameters:
     date.timezone: "America/Sao_Paulo"
     skin_template: "sidebar-mini skin-blue"
     route_admin: "admin_default_route"
+    doctrine_drive_cache: "apcu"
 
 
 framework:
@@ -89,6 +90,9 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        metadata_cache_driver: "%doctrine_drive_cache%"
+        query_cache_driver: "%doctrine_drive_cache%"
+        result_cache_driver: "%doctrine_drive_cache%"
         filters:
             softdeleteable:
                 class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter

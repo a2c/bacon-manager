@@ -43,7 +43,7 @@ class LoadModuleActionsData extends AbstractFixture implements OrderedFixtureInt
             'DELETE' => 'Deletar',
         ];
 
-        $moduleSlug = ['module', 'module-actions'];
+        $moduleSlug = ['module', 'module-actions', 'groups'];
 
         foreach ($moduleSlug as $moduleName) {
             $module = $this->getReference("module-name-$moduleName");

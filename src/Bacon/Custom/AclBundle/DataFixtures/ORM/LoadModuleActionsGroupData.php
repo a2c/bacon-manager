@@ -66,7 +66,6 @@ class LoadModuleActionsGroupData extends AbstractFixture implements OrderedFixtu
         }
 
         $manager->flush();
-
     }
 
     /**
@@ -97,6 +96,7 @@ class LoadModuleActionsGroupData extends AbstractFixture implements OrderedFixtu
 
         $modules[] = $this->getReference('module-name-module');
         $modules[] = $this->getReference('module-name-module-actions');
+        $modules[] = $this->getReference('module-name-groups');
 
         return $modules;
     }

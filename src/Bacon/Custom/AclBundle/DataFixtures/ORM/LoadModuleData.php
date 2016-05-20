@@ -55,7 +55,15 @@ class LoadModuleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('module-name-users', $objUsers);
         $manager->persist($objUsers);
 
+        $objGroup = new Module();
+        $objGroup
+            ->setName('Grupo')
+            ->setSlug('groups')
+        ;
 
+        $this->addReference('module-name-groups', $objGroup);
+
+        $manager->persist($objGroup);
         $manager->flush();
     }
 
