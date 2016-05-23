@@ -26,7 +26,7 @@
         "uecode/api-key-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "baconmanager/menu-bundle" : "0.1",
-        "baconmanager/core-bundle" : "1.1",
+        "baconmanager/core-bundle" : "~1.1",
         "baconmanager/language-bundle": "dev-master",
         "baconmanager/user-bundle": "dev-master",
         "baconmanager/acl-bundle": "dev-master"
