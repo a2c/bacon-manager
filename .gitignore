@@ -43,3 +43,5 @@
 /web/vendor
 /web/app_dev.php
 /docker-compose.yml
+/web/assets
+node_modules/
