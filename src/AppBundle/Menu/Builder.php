@@ -26,10 +26,7 @@ class Builder implements ContainerAwareInterface
     {
         $menu = $factory->createItem('root');
         $acl  = $this->container->get('bacon_acl.service.authorization');
-
-
-
-
+        
         $translate = $this->container->get('translator');
 
         //User
