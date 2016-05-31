@@ -35,13 +35,26 @@ var fontsFiles = [
 ];
 // ------ FIM Configuração Fonts --------- //
 
+// ------ Configuração Images ------------- //
+var imagesFilesToCss = [
+    './web/vendor/admin-lte/plugins/iCheck/square/blue.png',
+    './web/vendor/admin-lte/plugins/iCheck/square/blue@2x.png',
+];
+// ------ FIM Configuração Fonts --------- //
+
+
 // ------ Configuração CSS ------------- //
 var cssVendorFiles = [
     './web/vendor/admin-lte/bootstrap/css/bootstrap.min.css',
     './web/vendor/admin-lte/plugins/datepicker/datepicker3.css',
     './web/vendor/admin-lte/plugins/colorpicker/bootstrap-colorpicker.min.css',
     './web/vendor/admin-lte/plugins/select2/select2.min.css',
-    './web/vendor/admin-lte/plugins/iCheck/all.css',
+    './web/vendor/admin-lte/plugins/iCheck/minimal/_all.css',
+    './web/vendor/admin-lte/plugins/iCheck/square/_all.css',
+    './web/vendor/admin-lte/plugins/iCheck/flat/_all.css',
+    './web/vendor/admin-lte/plugins/iCheck/line/_all.css',
+    './web/vendor/admin-lte/plugins/iCheck/polaris/polaris.css',
+    './web/vendor/admin-lte/plugins/iCheck/futurico/futurico.css',
     './web/vendor/admin-lte/plugins/iCheck/square/blue.css',
     './web/vendor/admin-lte/dist/css/AdminLTE.min.css',
     './web/vendor/admin-lte/dist/css/skins/_all-skins.min.css'
@@ -71,7 +84,7 @@ gulp.task('minify-bundles-js', function() {
     ;
 });
 // ------ FIM Tasks de JS ---------------- //
-
+imagesFilesToCss
 // ------ Tasks copia de Fonts ----------- //
 gulp.task('fonts', function () {
     gulp
@@ -81,14 +94,23 @@ gulp.task('fonts', function () {
 });
 // ------ FIM Tasks copia de Fonts ------- //
 
+// ------ Tasks copia de Fonts ----------- //
+gulp.task('images-css', function () {
+    gulp
+        .src(imagesFilesToCss)
+        .pipe(gulp.dest(dirAssetsCss))
+    ;
+});
+// ------ FIM Tasks copia de Fonts ------- //
+
 // ------ Tasks CSS ----------- //
 gulp.task('concat-vendor-css', function () {
     return gulp
         .src(cssVendorFiles)
-        .pipe(concat('vendors.css'))
+        .pipe(concat('vendor.css'))
         .pipe(cssMin())
         .pipe(gulp.dest(dirAssetsCss))
-    ;
+        ;
 });
 
 gulp.task('concat-bundles-css', function () {
@@ -97,8 +119,8 @@ gulp.task('concat-bundles-css', function () {
         .pipe(concat('bundles.css'))
         .pipe(cssMin())
         .pipe(gulp.dest(dirAssetsCss))
-    ;
+        ;
 });
 // ------ FIM Tasks CSS ------- //
 
-gulp.task('default', ['minify-vendor-js','minify-bundles-js','fonts','concat-bundles-css','concat-vendor-css']);
+gulp.task('default', ['minify-vendor-js','minify-bundles-js','fonts','concat-bundles-css','concat-vendor-css','images-css']);
