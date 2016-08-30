@@ -29,3 +29,7 @@ bacon_user:
     resource: "@BaconUserBundle/Controller/"
     type:     annotation
     prefix:   /admin
+bacon_media_library:
+    resource: "@BaconMediaLibraryBundle/Controller/"
+    type:     annotation
+    prefix:   /

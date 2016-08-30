@@ -34,6 +34,13 @@ class AppKernel extends Kernel
             // Fixtures
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
+            //MediaLibrary
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
+            new Bacon\Bundle\MediaLibraryBundle\BaconMediaLibraryBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
+
             //Aplication
             new AppBundle\AppBundle(),
             new Bacon\Custom\UserBundle\BaconCustomUserBundle(),
