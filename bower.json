@@ -12,9 +12,10 @@
     "tests"
   ],
   "dependencies": {
-    "admin-lte" : "2.3.0",
-    "flag-icon-css" : "0.8.1",
+    "admin-lte": "2.3.0",
+    "flag-icon-css": "0.8.1",
     "jquery-validation": "1.15.0",
-    "blueimp-file-upload": "9.12.5"
+    "blueimp-file-upload": "9.12.5",
+    "fancybox": "~2.1.5"
   }
 }

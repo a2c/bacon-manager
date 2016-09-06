@@ -21,7 +21,8 @@ var jsVendor = [
     './web/vendor/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js',
     './web/vendor/admin-lte/plugins/iCheck/icheck.min.js',
     './web/vendor/admin-lte/plugins/select2/select2.full.js',
-    './web/vendor/admin-lte/dist/js/app.min.js'
+    './web/vendor/admin-lte/dist/js/app.min.js',
+    './web/vendor/fancybox/source/jquery.fancybox.pack.js'
 ];
 
 var jsBundles = [
@@ -39,6 +40,8 @@ var fontsFiles = [
 var imagesFilesToCss = [
     './web/vendor/admin-lte/plugins/iCheck/square/blue.png',
     './web/vendor/admin-lte/plugins/iCheck/square/blue@2x.png',
+    './web/vendor/fancybox/source/*.gif',
+    './web/vendor/fancybox/source/*.png'
 ];
 // ------ FIM Configuração Fonts --------- //
 
@@ -57,7 +60,8 @@ var cssVendorFiles = [
     './web/vendor/admin-lte/plugins/iCheck/futurico/futurico.css',
     './web/vendor/admin-lte/plugins/iCheck/square/blue.css',
     './web/vendor/admin-lte/dist/css/AdminLTE.min.css',
-    './web/vendor/admin-lte/dist/css/skins/_all-skins.min.css'
+    './web/vendor/admin-lte/dist/css/skins/_all-skins.min.css',
+    './web/vendor/fancybox/source/jquery.fancybox.css'
 ];
 
 var cssBundlesFiles = [
