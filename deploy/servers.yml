@@ -2,8 +2,8 @@
 homolog:
   host: localhost 
   port: 80 
-  user: root
-  password: 123 
+  user:
+  password:
   stage: homologacao
   deploy_path: /var/www/test
 
@@ -11,8 +11,8 @@ homolog:
 production:
   host: localhost
   port: 80
-  user: root
-  password: 123
+  user:
+  password:
   stage: producao
   deploy_path: /var/www/test
 

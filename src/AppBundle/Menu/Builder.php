@@ -31,15 +31,15 @@ class Builder implements ContainerAwareInterface
 
         //User
         if ($acl->authorize('users', 'INDEX')) {
-            $menu->addChild($translate->trans('User'), ['route' => 'admin_user'])->setAttribute('icon', '<i class="fa fa-user"></i>');
+            $menu->addChild($translate->trans('User'), ['route' => 'admin_user'])->setExtra('icon', '<i class="fa fa-user"></i>');
         }
         //Groups
         if ($acl->authorize('groups', 'INDEX')) {
-            $menu->addChild($translate->trans('Group of Users'), ['route' => 'fos_user_group_list'])->setAttribute('icon', '<i class="fa fa-users"></i>');
+            $menu->addChild($translate->trans('Group of Users'), ['route' => 'fos_user_group_list'])->setExtra('icon', '<i class="fa fa-users"></i>');
         }
 
         if ($acl->authorize('acl', 'ACL')) {
-            $menu->addChild($translate->trans('ACL'))->setAttribute('icon', '<i class="fa fa-lock"></i>');
+            $menu->addChild($translate->trans('ACL'))->setExtra('icon', '<i class="fa fa-lock"></i>');
         }
 
         if ($acl->authorize('module', 'INDEX')) {

@@ -11,8 +11,8 @@
         ]
     },
     "require": {
-        "php": ">=5.5",
-        "symfony/symfony": "3.1.*",
+        "php": ">=5.6",
+        "symfony/symfony": "3.2.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
@@ -23,7 +23,6 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "twig/extensions": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "^2.2",
-        "uecode/api-key-bundle": "dev-master",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "baconmanager/menu-bundle" : "0.1",
         "baconmanager/core-bundle" : "~1.1",
@@ -38,9 +37,7 @@
         "baconmanager/generator-bundle": "dev-master",
         "symfony/phpunit-bridge": "^2.7",
         "phpunit/phpunit" : "4.6.*",
-        "phpunit/php-code-coverage": "2.0.11",
-        "phpro/grumphp": "*",
-        "escapestudios/symfony2-coding-standard" : "~2.0"
+        "phpunit/php-code-coverage": "2.0.11"
     },
   "scripts": {
     "post-install-cmd": [

@@ -17,7 +17,7 @@ parameters:
     date.timezone: "America/Sao_Paulo"
     skin_template: "sidebar-mini skin-blue"
     route_admin: "admin_default_route"
-    doctrine_drive_cache: "apcu"
+    doctrine_drive_cache: "array"
 
 
 framework:
@@ -43,9 +43,6 @@ framework:
     fragments:       ~
     http_method_override: true
 
-uecode_api_key:
-    delivery: header #or header
-    parameter_name: X-Authorization
 
 # Twig Configuration
 twig:
@@ -103,6 +100,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: admin
     user_class: Bacon\Custom\UserBundle\Entity\User
+    from_email:
+        address: "a2c@a2c.com.br"
+        sender_name: "a2c@a2c.com.br"
     group:
         group_class: Bacon\Custom\UserBundle\Entity\Group
 

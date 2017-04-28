@@ -12,8 +12,6 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username
-        db:
-            id: uecode.api_key.provider.user_provider
 
     firewalls:
         admin:
@@ -27,11 +25,6 @@ security:
                 path: /admin/logout
                 target: /admin/login
             anonymous: true
-        api:
-            pattern: ^/api/*
-            api_key: true
-            stateless: true
-            provider: db # Required if you have multiple providers and firewalls
 
     access_control:
         - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

@@ -28,9 +28,6 @@ class AppKernel extends Kernel
             new Bacon\Bundle\UserBundle\BaconUserBundle(),
             new Bacon\Bundle\AclBundle\BaconAclBundle(),
 
-            // ApiKey
-            new Uecode\Bundle\ApiKeyBundle\UecodeApiKeyBundle(),
-
             // Fixtures
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
