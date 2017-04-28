@@ -2,6 +2,7 @@
     "name": "bacon/bacon_manager_start",
     "license": "proprietary",
     "type": "project",
+    "description": "Project Manager",
     "autoload": {
         "psr-4": {
             "": "src/"

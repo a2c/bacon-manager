@@ -45,3 +45,4 @@
 /docker-compose.yml
 /web/assets
 node_modules/
+web/config.php
